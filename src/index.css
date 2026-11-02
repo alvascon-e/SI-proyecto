@@ -425,20 +425,7 @@ body:has(.movil) .demo-fab .demo-txt { display: none; }
 .fila-lote:hover { background: #f6f9fe; }
 .m-header.con-volver { background: rgba(238, 243, 251, 0.85); }
 
-/* panel: barra lateral azul profundo, fondo azul claro */
-.sidebar { background: radial-gradient(300px 260px at 0% 0%, rgba(77, 148, 255, 0.28), transparent 70%), linear-gradient(180deg, #0f2340, #0e2e63); border-right: none; }
-.sb-logo { background: #fff; border-radius: 14px; padding: 10px 12px; margin: 0 4px 10px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18); }
-.sb-grupo { color: #7f95ba; }
-.sidebar nav a { color: #d3def0; }
-.sidebar nav a svg { color: #8fa6cc; }
-.sidebar nav a:hover { background: rgba(255, 255, 255, 0.06); }
-.sidebar nav a.active { background: rgba(255, 255, 255, 0.12); color: #fff; box-shadow: inset 3px 0 0 #5da2ff; }
-.sidebar nav a.active svg { color: #8fc0ff; }
-.sb-pie { border-top-color: rgba(255, 255, 255, 0.1); }
-.sb-user b { color: #fff; }
-.sb-user small { color: #8fa6cc; }
-.sb-pie .icon-btn { color: #c6d6f1; }
-.sb-pie .icon-btn:hover { background: rgba(255, 255, 255, 0.08); }
+/* panel: barra lateral clara (gris), fondo azul claro */
 .admin-main { background: radial-gradient(900px 300px at 100% 0%, rgba(0, 102, 220, 0.08), transparent 70%), var(--fondo); }
 .admin-top { background: rgba(238, 243, 251, 0.85); }
 .kpi.k-azul > svg { color: #0066dc; background: #e3eefe; }
@@ -493,3 +480,17 @@ body:has(.movil) .demo-fab { bottom: 92px; }
   -webkit-mask-image: linear-gradient(to top, #000 calc(100% - 2px), transparent);
   mask-image: linear-gradient(to top, #000 calc(100% - 2px), transparent);
 }
+
+/* vidrio mojado: deja ver lo de atrás, refractado y apenas desenfocado; barra 10 % más baja */
+.tabbar {
+  padding: 5px;
+  background: linear-gradient(180deg, rgba(40, 72, 130, 0.30), rgba(15, 35, 64, 0.42));
+  backdrop-filter: url(#vidrio) blur(3px) saturate(160%) brightness(0.92);
+  -webkit-backdrop-filter: blur(5px) saturate(160%) brightness(0.92);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -1px 0 rgba(255, 255, 255, 0.08), 0 12px 30px rgba(15, 35, 64, 0.22);
+}
+.tabbar a { height: 45px; color: rgba(255, 255, 255, 0.86); text-shadow: 0 1px 2px rgba(15, 35, 64, 0.35); }
+.tabbar a svg { filter: drop-shadow(0 1px 1.5px rgba(15, 35, 64, 0.35)); }
+.tabbar a.active { background: rgba(255, 255, 255, 0.22); }
+.tabbar-velo { height: 76px; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }

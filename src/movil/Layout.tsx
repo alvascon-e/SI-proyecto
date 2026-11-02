@@ -13,10 +13,10 @@ export default function MovilLayout() {
         <Avisos />
         <main className="movil-contenido"><Outlet /></main>
         <nav className="tabbar">
-          <NavLink to="/app" end><Map size={21} /><span>Mapa</span></NavLink>
-          <NavLink to="/app/buscar"><Navigation size={21} /><span>Buscar</span></NavLink>
-          <NavLink to="/app/reportar"><TriangleAlert size={21} /><span>Reportar</span></NavLink>
-          <NavLink to="/app/perfil"><User size={21} /><span>Perfil</span></NavLink>
+          <NavLink to="/app" end><Map size={22} strokeWidth={2.4} /><span>Mapa</span></NavLink>
+          <NavLink to="/app/buscar"><Navigation size={22} strokeWidth={2.4} /><span>Buscar</span></NavLink>
+          <NavLink to="/app/reportar"><TriangleAlert size={22} strokeWidth={2.4} /><span>Reportar</span></NavLink>
+          <NavLink to="/app/perfil"><User size={22} strokeWidth={2.4} /><span>Perfil</span></NavLink>
         </nav>
       </div>
     </div>

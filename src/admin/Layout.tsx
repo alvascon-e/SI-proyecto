@@ -14,7 +14,7 @@ export default function AdminLayout() {
   return (
     <div className="admin">
       <aside className="sidebar">
-        <div className="sb-logo"><Logo size={30} /></div>
+        <div className="sb-logo"><Logo size={28} /></div>
         <div className="sb-grupo">General</div>
         <nav>
           <NavLink to="/admin" end><LayoutDashboard size={18} /> Monitoreo</NavLink>

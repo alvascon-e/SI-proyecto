@@ -4,14 +4,14 @@
 :root {
   --azul: #0066dc;
   --azul-osc: #0052b4;
-  --azul-claro: #eaf2fe;
+  --azul-claro: #e3eefe;
   --navy: #0f2340;
   --texto: #1d2a3f;
   --muted: #6b7486;
   --tenue: #9aa2b1;
   --hair: rgba(15, 35, 64, 0.08);
   --hair-2: rgba(15, 35, 64, 0.14);
-  --fondo: #f3f4f7;
+  --fondo: #eef3fb;
   --card: #ffffff;
   --verde: #1f9d55;
   --ambar: #e08a00;
@@ -103,7 +103,7 @@ input, select, textarea { font: inherit; }
 .portada > .muted { max-width: 520px; }
 
 /* ---------- app móvil ---------- */
-.movil-marco { min-height: 100vh; display: flex; justify-content: center; background: #e6e9f0; }
+.movil-marco { min-height: 100vh; display: flex; justify-content: center; background: linear-gradient(180deg, #dbe6f7, #e9eff9); }
 .movil { position: relative; width: 100%; max-width: 430px; min-height: 100vh; background: var(--fondo); display: flex; flex-direction: column; box-shadow: 0 0 60px rgba(15, 35, 64, 0.12); }
 .movil-contenido { flex: 1; padding-bottom: 96px; }
 .m-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding: 22px 18px 14px; }
@@ -227,7 +227,7 @@ input, select, textarea { font: inherit; }
 
 /* mapa */
 .leaflet-container { font-family: inherit; background: #eef0f3; }
-.leaflet-tile-pane { filter: saturate(0.45) brightness(1.05) contrast(0.92); }
+.leaflet-tile-pane { filter: saturate(0.8) brightness(1.02); }
 .leaflet-control-attribution { font-size: 9px !important; background: rgba(255, 255, 255, 0.7) !important; border-radius: 6px 0 0 0; color: var(--tenue) !important; }
 .leaflet-control-attribution a { color: var(--muted) !important; }
 .pin-lote { display: inline-flex; align-items: center; gap: 5px; height: 24px; padding: 0 8px 0 6px; border-radius: 999px; background: #fff; color: var(--navy); border: 1px solid rgba(15, 35, 64, 0.1); box-shadow: 0 4px 10px rgba(15, 35, 64, 0.18); font-size: 12px; white-space: nowrap; transition: transform 0.2s; }
@@ -416,3 +416,47 @@ body:has(.movil) .demo-fab .demo-txt { display: none; }
 .grid-estado { grid-template-columns: 1.4fr 1fr; }
 .tabla-estado .barra.mini { width: 48px; }
 @media (max-width: 1100px) { .grid-estado { grid-template-columns: 1fr; } }
+
+/* ---------- color: cabecera azul, fondos azul suave ---------- */
+.m-mapa { margin-top: 14px; }
+.tabbar a.active { color: var(--azul); }
+.tabbar a.active svg { filter: drop-shadow(0 4px 8px rgba(0, 102, 220, 0.35)); }
+.grupo, .carrusel, .alt, .perfil-card, .plan-card, .comprobante, .nav-card, .gran-cifra, .fila-datos div, .grafico { border-color: rgba(0, 102, 220, 0.08); }
+.fila-lote:hover { background: #f6f9fe; }
+.m-header.con-volver { background: rgba(238, 243, 251, 0.85); }
+
+/* panel: barra lateral azul profundo, fondo azul claro */
+.sidebar { background: radial-gradient(300px 260px at 0% 0%, rgba(77, 148, 255, 0.28), transparent 70%), linear-gradient(180deg, #0f2340, #0e2e63); border-right: none; }
+.sb-logo { background: #fff; border-radius: 14px; padding: 10px 12px; margin: 0 4px 10px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18); }
+.sb-grupo { color: #7f95ba; }
+.sidebar nav a { color: #d3def0; }
+.sidebar nav a svg { color: #8fa6cc; }
+.sidebar nav a:hover { background: rgba(255, 255, 255, 0.06); }
+.sidebar nav a.active { background: rgba(255, 255, 255, 0.12); color: #fff; box-shadow: inset 3px 0 0 #5da2ff; }
+.sidebar nav a.active svg { color: #8fc0ff; }
+.sb-pie { border-top-color: rgba(255, 255, 255, 0.1); }
+.sb-user b { color: #fff; }
+.sb-user small { color: #8fa6cc; }
+.sb-pie .icon-btn { color: #c6d6f1; }
+.sb-pie .icon-btn:hover { background: rgba(255, 255, 255, 0.08); }
+.admin-main { background: radial-gradient(900px 300px at 100% 0%, rgba(0, 102, 220, 0.08), transparent 70%), var(--fondo); }
+.admin-top { background: rgba(238, 243, 251, 0.85); }
+.kpi.k-azul > svg { color: #0066dc; background: #e3eefe; }
+.kpi.k-verde > svg { color: #128a5e; background: #dff5ec; }
+.kpi.k-indigo > svg { color: #4a4fd1; background: #e8e9fc; }
+.kpi.k-violeta > svg { color: #7a3fd4; background: #f0e8fd; }
+.card { border-color: rgba(0, 102, 220, 0.07); }
+.tabla th { background: #f5f8fd; }
+.tabla-estado { table-layout: fixed; }
+.tabla-estado td:first-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.t-lleno { display: block; font-size: 11.5px; font-weight: 600; color: var(--ambar); margin-top: 2px; white-space: nowrap; }
+
+/* control segmentado y barra inferior en azul */
+.segmentado { background: rgba(0, 102, 220, 0.1); }
+.segmentado button { color: var(--azul-osc); opacity: 0.85; }
+.segmentado button.on { background: var(--azul); color: #fff; opacity: 1; box-shadow: 0 6px 14px rgba(0, 102, 220, 0.28); }
+.tabbar { background: linear-gradient(180deg, rgba(16, 42, 86, 0.97), rgba(15, 35, 64, 0.98)); border-top: none; box-shadow: 0 -10px 30px rgba(15, 35, 64, 0.18); }
+.tabbar a { color: #8fa6cc; }
+.tabbar a.active { color: #fff; }
+.tabbar a.active svg { background: rgba(255, 255, 255, 0.14); border-radius: 10px; padding: 3px 10px; width: 44px; height: 28px; filter: none; }
+.tabbar a svg { width: 44px; height: 28px; padding: 3px 10px; }

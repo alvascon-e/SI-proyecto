@@ -25,11 +25,11 @@ export default function Dashboard() {
     <div>
       <div className="a-head"><h1 className="a-titulo">Monitoreo en tiempo real</h1><p className="muted">Ocupación detectada por las cámaras de cada parqueadero.</p></div>
       <div className="kpis">
-        <div className="kpi"><ParkingSquare /><div><b>{Math.round((ocup / cap) * 100)}%</b><span>Ocupación del campus</span></div></div>
-        <div className="kpi"><Car /><div><b>{libresTot}</b><span>Espacios libres de {cap}</span></div></div>
-        <div className="kpi"><TrendingUp /><div><b>{flujo >= 0 ? '+' : ''}{flujo.toFixed(1)}</b><span>Autos/min (flujo neto)</span></div></div>
-        <div className={`kpi${saturados ? ' rojo' : ''}`}><Siren /><div><b>{saturados}</b><span>Saturados · {abiertas} incidencias abiertas</span></div></div>
-        <div className={`kpi${camOn < camTot ? ' ambar' : ''}`}><Camera /><div><b>{camOn}/{camTot}</b><span>Cámaras IA en línea</span></div></div>
+        <div className="kpi k-azul"><ParkingSquare /><div><b>{Math.round((ocup / cap) * 100)}%</b><span>Ocupación del campus</span></div></div>
+        <div className="kpi k-verde"><Car /><div><b>{libresTot}</b><span>Espacios libres de {cap}</span></div></div>
+        <div className="kpi k-indigo"><TrendingUp /><div><b>{flujo >= 0 ? '+' : ''}{flujo.toFixed(1)}</b><span>Autos/min (flujo neto)</span></div></div>
+        <div className={`kpi${saturados ? ' rojo' : ''}`}><Siren /><div><b>{saturados}</b><span>Parqueaderos saturados</span></div></div>
+        <div className={`kpi k-violeta${camOn < camTot ? ' ambar' : ''}`}><Camera /><div><b>{camOn}/{camTot}</b><span>Cámaras IA · {abiertas} incidencias</span></div></div>
       </div>
 
       <div className="grid-2">
@@ -51,6 +51,7 @@ export default function Dashboard() {
         <div className="card">
           <div className="card-t">Estado por parqueadero</div>
           <table className="tabla tabla-estado">
+            <colgroup><col /><col style={{ width: 128 }} /><col style={{ width: 76 }} /><col style={{ width: 118 }} /><col style={{ width: 124 }} /></colgroup>
             <thead><tr><th>Parqueadero</th><th>Ocupación</th><th>Libres</th><th>Tendencia</th><th>Estado</th></tr></thead>
             <tbody>
               {[...PARQUEADEROS].sort((a, b) => pct(b, lotes[b.id]) - pct(a, lotes[a.id])).map((p) => {
@@ -60,7 +61,7 @@ export default function Dashboard() {
                     <td className="t-nombre">{p.nombre.replace(/^Parqueadero |^Parqueo /, "")}</td>
                     <td className="nowrap"><div className="barra mini"><i style={{ width: `${pct(p, l)}%`, background: COLOR_NIVEL[n] }} /></div>{pct(p, l)}%</td>
                     <td><b>{libres(p, l)}</b>/{p.capacidad}</td>
-                    <td className="nowrap">{l.tendencia > 0.3 ? `▲ ${l.tendencia.toFixed(1)}/min` : l.tendencia < -0.3 ? `▼ ${Math.abs(l.tendencia).toFixed(1)}/min` : 'Estable'}{ll && ll < 30 ? <small className="t-guardia" style={{ color: 'var(--ambar)' }}>Lleno en ~{ll} min</small> : null}</td>
+                    <td className="nowrap">{l.tendencia > 0.3 ? `▲ ${l.tendencia.toFixed(1)}/min` : l.tendencia < -0.3 ? `▼ ${Math.abs(l.tendencia).toFixed(1)}/min` : 'Estable'}{ll && ll < 30 ? <small className="t-lleno">Lleno en ~{ll} min</small> : null}</td>
                     <td className="nowrap"><span className="estado" style={{ ['--c' as string]: COLOR_NIVEL[n] }}>{TEXTO_NIVEL[n]}</span></td>
                   </tr>
                 );

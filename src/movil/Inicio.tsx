@@ -24,23 +24,23 @@ export default function Inicio() {
   const dia = new Date().toLocaleDateString('es-EC', { weekday: 'long', day: 'numeric', month: 'long' });
   return (
     <div>
-      <header className="m-header">
-        <div>
-          <div className="eyebrow">{dia} · {fmtHora(hora)}</div>
-          <h1>Hola, {u.nombre.split(' ')[0]}</h1>
-          <div className="m-sub">{CATEGORIAS[u.categoria]} · ESPOL</div>
+        <header className="m-header">
+          <div>
+            <div className="eyebrow">{dia} · {fmtHora(hora)}</div>
+            <h1>Hola, {u.nombre.split(' ')[0]}</h1>
+            <div className="m-sub">{CATEGORIAS[u.categoria]} · ESPOL</div>
+          </div>
+          <button className="cuota" onClick={() => nav('/app/planes')}>
+            <span className={`plan-tag ${u.plan}`}>{PLANES[u.plan].nombre}</span>
+            <small>{lim === null ? 'Consultas ilimitadas' : `${u.consultasHoy} de ${lim} consultas`}</small>
+          </button>
+        </header>
+        <div className="pad">
+          <div className="segmentado">
+            <button className={soloMios ? 'on' : ''} onClick={() => setSoloMios(true)}>Autorizados para mí</button>
+            <button className={!soloMios ? 'on' : ''} onClick={() => setSoloMios(false)}>Todos</button>
+          </div>
         </div>
-        <button className="cuota" onClick={() => nav('/app/planes')}>
-          <span className={`plan-tag ${u.plan}`}>{PLANES[u.plan].nombre}</span>
-          <small>{lim === null ? 'Consultas ilimitadas' : `${u.consultasHoy} de ${lim} consultas`}</small>
-        </button>
-      </header>
-      <div className="pad">
-        <div className="segmentado">
-          <button className={soloMios ? 'on' : ''} onClick={() => setSoloMios(true)}>Autorizados para mí</button>
-          <button className={!soloMios ? 'on' : ''} onClick={() => setSoloMios(false)}>Todos</button>
-        </div>
-      </div>
       <div className="m-mapa">
         <MapaCampus alto={300} categoria={soloMios ? u.categoria : null} seleccionado={sel} onSelect={(id) => { setSel(id); abrir(id); }} />
       </div>

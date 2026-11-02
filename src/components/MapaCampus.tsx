@@ -36,9 +36,12 @@ interface Props {
   encuadre?: [number, number][];
   zoom?: number;
   interactivo?: boolean;
+  /** colores y etiquetas fijas por parqueadero (reportes); si no, se usa la ocupación en vivo */
+  colores?: Record<string, string>;
+  etiquetas?: Record<string, string | number>;
 }
 
-export default function MapaCampus({ alto = 360, categoria, seleccionado, onSelect, ruta, destino, yo, encuadre, zoom = 16, interactivo = true }: Props) {
+export default function MapaCampus({ alto = 360, categoria, seleccionado, onSelect, ruta, destino, yo, encuadre, zoom = 16, interactivo = true, colores, etiquetas }: Props) {
   const lotes = useParki((s) => s.lotes);
   return (
     <MapContainer center={CAMPUS_CENTRO} zoom={zoom} style={{ height: alto, width: '100%' }} zoomControl={false}
@@ -50,13 +53,13 @@ export default function MapaCampus({ alto = 360, categoria, seleccionado, onSele
       {PARQUEADEROS.map((p) => {
         const l = lotes[p.id];
         const permitido = !categoria || p.categorias.includes(categoria);
-        const c = permitido ? COLOR_NIVEL[nivel(p, l)] : '#94a3b8';
+        const c = colores?.[p.id] ?? (permitido ? COLOR_NIVEL[nivel(p, l)] : '#94a3b8');
         const sel = seleccionado === p.id;
         return (
           <div key={p.id}>
             <Polygon positions={p.poligono} eventHandlers={{ click: () => onSelect?.(p.id) }}
               pathOptions={{ color: c, weight: sel ? 2.5 : 1, fillColor: c, fillOpacity: permitido ? (sel ? 0.45 : 0.22) : 0.08 }} />
-            <Marker position={p.centro} icon={etiqueta(l.cerrado ? '—' : libres(p, l), c, sel, !permitido)} eventHandlers={{ click: () => onSelect?.(p.id) }}>
+            <Marker position={p.centro} icon={etiqueta(etiquetas ? (etiquetas[p.id] ?? '') : l.cerrado ? '—' : libres(p, l), c, sel, !permitido)} eventHandlers={{ click: () => onSelect?.(p.id) }}>
               <Tooltip direction="top" offset={[0, -14]}>{p.nombre}</Tooltip>
             </Marker>
           </div>

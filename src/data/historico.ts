@@ -42,7 +42,7 @@ export function rotacion() {
     const r = rng(i * 31 + 5);
     const pop = POPULARIDAD[p.id] ?? 1;
     const docente = p.categorias.includes('docente') && !p.categorias.includes('estudiante');
-    const permanencia = Math.round((docente ? 230 : 135) + r() * 60 - pop * 20);
+    const permanencia = Math.round((docente ? 230 : 135) + r() * 60 - pop * 1.3);
     return {
       id: p.id,
       nombre: p.nombre.replace('Parqueadero ', '').replace('Parqueo ', ''),
@@ -73,5 +73,53 @@ export function probabilidadLleno(id: string): { hora: string; prob: number }[] 
   return HORAS.map((h) => {
     const occ = curvaHora(h * 60 + 30) * pop;
     return { hora: `${h}h`, prob: Math.round(Math.min(0.98, Math.max(0.02, (occ - 0.62) * 2.6)) * 100) };
+  });
+}
+
+// ---------------------------------------------------------------- reportería: dato → hallazgo → decisión
+export const HORA_PICO = 10;
+
+/** Demanda en la hora pico frente a la capacidad: cuántas plazas faltan y con qué frecuencia se satura. */
+export function deficit() {
+  return PARQUEADEROS.map((p, i) => {
+    const pop = POPULARIDAD[p.id] ?? 1;
+    const demanda = Math.round(p.capacidad * curvaHora(HORA_PICO * 60 + 30) * pop * 1.3);
+    const faltan = Math.max(0, demanda - p.capacidad);
+    const r = rng(i * 13 + 2);
+    const diasSaturado = Math.min(100, Math.max(0, Math.round((pop - 0.78) * 260 + r() * 8)));
+    return { id: p.id, nombre: p.nombre.replace(/^Parqueadero |^Parqueo /, ''), capacidad: p.capacidad, demanda, faltan, diasSaturado };
+  }).sort((a, b) => b.faltan - a.faltan || b.diasSaturado - a.diasSaturado);
+}
+
+/** Impacto de ParkiPol por semana (se lanzó en la semana 3). */
+export function impacto(semanaActual = 9) {
+  const r = rng(91);
+  let redir = 0;
+  return Array.from({ length: semanaActual }, (_, i) => {
+    const s = i + 1;
+    const busqueda = s < 3 ? 12 + r() * 0.8 : +(4.1 + 7.9 * Math.exp(-(s - 3) * 0.75) + (r() - 0.5) * 0.4).toFixed(1);
+    const semana = s < 3 ? 0 : Math.round(380 + (s - 3) * 95 + r() * 60);
+    redir += semana;
+    return { semana: `S${s}`, busqueda: +busqueda.toFixed(1), redirigidos: semana, acumulado: redir };
+  });
+}
+
+/** Seguridad: tiempo medio de respuesta de los guardias por semana e incidencias por parqueadero. */
+export function seguridad(semanaActual = 9) {
+  const r = rng(57);
+  const semanas = Array.from({ length: semanaActual }, (_, i) => ({ semana: `S${i + 1}`, respuesta: +(i < 2 ? 21 - i + r() * 2 : 6.2 + 11 * Math.exp(-(i - 2) * 0.7) + r()).toFixed(1) }));
+  const porLote = PARQUEADEROS.map((p, i) => ({ nombre: p.nombre.replace(/^Parqueadero |^Parqueo /, ''), incidencias: Math.round((POPULARIDAD[p.id] ?? 1) * 14 * (0.6 + rng(i * 7 + 1)() * 0.8)) }))
+    .sort((a, b) => b.incidencias - a.incidencias).slice(0, 6);
+  return { semanas, porLote };
+}
+
+/** Proyección del semestre con escenarios: habilitar Coliseo Nuevo en evaluaciones y límite de 6 h. */
+export function escenario(coliseo: boolean, limite: boolean) {
+  return proyeccionSemestre().map((d, i) => {
+    const s = i + 1;
+    const evaluaciones = Math.exp(-((s - 8.5) ** 2) / 1.5) + Math.exp(-((s - 16.5) ** 2) / 1.8);
+    const baja = (coliseo ? 13 * evaluaciones : 0) + (limite ? 3.5 : 0);
+    const base = d.proyeccion ?? d.real;
+    return { ...d, escenario: s >= 9 && (coliseo || limite) && base !== null ? Math.round(base - baja) : null };
   });
 }

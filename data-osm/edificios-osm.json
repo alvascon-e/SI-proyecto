@@ -1,0 +1,1390 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-02T16:58:27Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "way",
+  "id": 46485327,
+  "center": {
+    "lat": -2.1474283,
+    "lon": -79.9641216
+  },
+  "tags": {
+    "amenity": "parking",
+    "capacity": "8",
+    "name": "Parqueo trasero rectorado",
+    "parking": "surface"
+  }
+},
+{
+  "type": "way",
+  "id": 46485330,
+  "center": {
+    "lat": -2.1472657,
+    "lon": -79.9661054
+  },
+  "tags": {
+    "amenity": "library",
+    "building": "yes",
+    "layer": "1",
+    "name": "Biblioteca Central"
+  }
+},
+{
+  "type": "way",
+  "id": 46485334,
+  "center": {
+    "lat": -2.1465562,
+    "lon": -79.9671686
+  },
+  "tags": {
+    "amenity": "college",
+    "building": "yes",
+    "name": "Departamento de Física"
+  }
+},
+{
+  "type": "way",
+  "id": 46485335,
+  "center": {
+    "lat": -2.1463828,
+    "lon": -79.9670304
+  },
+  "tags": {
+    "amenity": "college",
+    "building": "yes",
+    "name": "Departamento de Matemáticas"
+  }
+},
+{
+  "type": "way",
+  "id": 46485337,
+  "center": {
+    "lat": -2.1466954,
+    "lon": -79.9678120
+  },
+  "tags": {
+    "amenity": "university",
+    "name": "Laboratorios de Física y Química Bloque 9G - 9H"
+  }
+},
+{
+  "type": "way",
+  "id": 46485339,
+  "center": {
+    "lat": -2.1463258,
+    "lon": -79.9646257
+  },
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "name": "Alice's Food"
+  }
+},
+{
+  "type": "way",
+  "id": 125565753,
+  "center": {
+    "lat": -2.1460832,
+    "lon": -79.9672303
+  },
+  "tags": {
+    "amenity": "university",
+    "name": "Instituto de Matemáticas Aulas - Bloque ED"
+  }
+},
+{
+  "type": "way",
+  "id": 125565754,
+  "center": {
+    "lat": -2.1468238,
+    "lon": -79.9667656
+  },
+  "tags": {
+    "amenity": "university",
+    "name": "FCNM Básica Bloque 9M"
+  }
+},
+{
+  "type": "way",
+  "id": 125565755,
+  "center": {
+    "lat": -2.1471745,
+    "lon": -79.9678490
+  },
+  "tags": {
+    "addr:city": "Guayaquil",
+    "amenity": "university",
+    "building": "yes",
+    "name": "FCSH Bloque 9F"
+  }
+},
+{
+  "type": "way",
+  "id": 126162862,
+  "center": {
+    "lat": -2.1454417,
+    "lon": -79.9660329
+  },
+  "tags": {
+    "amenity": "school",
+    "building:levels": "2",
+    "name": "11D - Aulas FIEC"
+  }
+},
+{
+  "type": "way",
+  "id": 126162867,
+  "center": {
+    "lat": -2.1476516,
+    "lon": -79.9644584
+  },
+  "tags": {
+    "building": "university",
+    "name": "Rectorado"
+  }
+},
+{
+  "type": "way",
+  "id": 126173850,
+  "center": {
+    "lat": -2.1469100,
+    "lon": -79.9671350
+  },
+  "tags": {
+    "building": "university",
+    "name": "Decanato FCNM - 9A"
+  }
+},
+{
+  "type": "way",
+  "id": 126173976,
+  "center": {
+    "lat": -2.1471614,
+    "lon": -79.9672731
+  },
+  "tags": {
+    "amenity": "university",
+    "building:levels": "1",
+    "name": "Laboratorios FCSH - Bloque 9B"
+  }
+},
+{
+  "type": "way",
+  "id": 126173977,
+  "center": {
+    "lat": -2.1442453,
+    "lon": -79.9670870
+  },
+  "tags": {
+    "amenity": "parking",
+    "capacity": "50",
+    "name": "Parqueadero Alumnos FIEC y FIMCP"
+  }
+},
+{
+  "type": "way",
+  "id": 126174069,
+  "center": {
+    "lat": -2.1450180,
+    "lon": -79.9665623
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "yes",
+    "name": "11F - Oficinas de Profesores, CISCO - ESPOL"
+  }
+},
+{
+  "type": "way",
+  "id": 126174070,
+  "center": {
+    "lat": -2.1449910,
+    "lon": -79.9658062
+  },
+  "tags": {
+    "amenity": "university",
+    "name": "FIMCP Aulas - Bloque 12C"
+  }
+},
+{
+  "type": "way",
+  "id": 317804756,
+  "center": {
+    "lat": -2.1446299,
+    "lon": -79.9677209
+  },
+  "tags": {
+    "building": "university",
+    "building:levels": "3",
+    "name": "11A - FIEC, Edificio Administrativo y Aulas"
+  }
+},
+{
+  "type": "way",
+  "id": 317805895,
+  "center": {
+    "lat": -2.1438122,
+    "lon": -79.9671578
+  },
+  "tags": {
+    "building": "university",
+    "name": "CDP: Centro de Publicaciones"
+  }
+},
+{
+  "type": "way",
+  "id": 318417502,
+  "center": {
+    "lat": -2.1485880,
+    "lon": -79.9674144
+  },
+  "tags": {
+    "amenity": "university",
+    "name": "FCSH Bloque 8F-8G-8H"
+  }
+},
+{
+  "type": "way",
+  "id": 318417503,
+  "center": {
+    "lat": -2.1487100,
+    "lon": -79.9677955
+  },
+  "tags": {
+    "building": "university",
+    "name": "CELEX - Bloque 8I"
+  }
+},
+{
+  "type": "way",
+  "id": 318417504,
+  "center": {
+    "lat": -2.1482202,
+    "lon": -79.9685983
+  },
+  "tags": {
+    "building": "school",
+    "name": "FSCH Bloque 8B"
+  }
+},
+{
+  "type": "way",
+  "id": 318417506,
+  "center": {
+    "lat": -2.1437158,
+    "lon": -79.9679962
+  },
+  "tags": {
+    "building": "yes",
+    "leisure": "sports_centre",
+    "name": "GYM profesores"
+  }
+},
+{
+  "type": "way",
+  "id": 318417509,
+  "center": {
+    "lat": -2.1450431,
+    "lon": -79.9641974
+  },
+  "tags": {
+    "building": "yes",
+    "leisure": "sports_centre",
+    "name": "Coliseo Viejo ESPOL"
+  }
+},
+{
+  "type": "way",
+  "id": 318417512,
+  "center": {
+    "lat": -2.1523864,
+    "lon": -79.9582548
+  },
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "name": "Comedor Piscina"
+  }
+},
+{
+  "type": "way",
+  "id": 319342542,
+  "center": {
+    "lat": -2.1536661,
+    "lon": -79.9569352
+  },
+  "tags": {
+    "building": "apartments",
+    "name": "Residencia para visitantes"
+  }
+},
+{
+  "type": "way",
+  "id": 319345066,
+  "center": {
+    "lat": -2.1518852,
+    "lon": -79.9566949
+  },
+  "tags": {
+    "building": "yes",
+    "name": "CADS,CIDIS,CIPAT,CENAIM,CISE"
+  }
+},
+{
+  "type": "way",
+  "id": 319345068,
+  "center": {
+    "lat": -2.1523138,
+    "lon": -79.9568184
+  },
+  "tags": {
+    "amenity": "parking",
+    "name": "Parqueo Biblioteca tecnologias"
+  }
+},
+{
+  "type": "way",
+  "id": 319345069,
+  "center": {
+    "lat": -2.1522706,
+    "lon": -79.9558094
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "3",
+    "name": "Bloque 3H",
+    "note": "ConduESPOL y Facultad de ciencias de la Vida"
+  }
+},
+{
+  "type": "way",
+  "id": 319345071,
+  "center": {
+    "lat": -2.1527354,
+    "lon": -79.9544781
+  },
+  "tags": {
+    "amenity": "parking",
+    "name": "Parqueo Copol"
+  }
+},
+{
+  "type": "way",
+  "id": 319345072,
+  "center": {
+    "lat": -2.1519291,
+    "lon": -79.9540708
+  },
+  "tags": {
+    "building": "yes",
+    "name": "laboratorio tec. mecanica"
+  }
+},
+{
+  "type": "way",
+  "id": 319345073,
+  "center": {
+    "lat": -2.1515137,
+    "lon": -79.9543068
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Centro de Investigaciones Biotecnológicas del Ecuador",
+    "name:es": "CIBE"
+  }
+},
+{
+  "type": "way",
+  "id": 319345077,
+  "center": {
+    "lat": -2.1521938,
+    "lon": -79.9550662
+  },
+  "tags": {
+    "amenity": "school",
+    "name": "COPOL - Báchilletato"
+  }
+},
+{
+  "type": "way",
+  "id": 319345083,
+  "center": {
+    "lat": -2.1512389,
+    "lon": -79.9551009
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Dept. Mantenimiento"
+  }
+},
+{
+  "type": "way",
+  "id": 319345087,
+  "center": {
+    "lat": -2.1514375,
+    "lon": -79.9532120
+  },
+  "tags": {
+    "building": "yes",
+    "name": "PetroEcuador"
+  }
+},
+{
+  "type": "way",
+  "id": 319345089,
+  "center": {
+    "lat": -2.1530464,
+    "lon": -79.9534120
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Datacenter Telconet",
+    "office": "telecommunication"
+  }
+},
+{
+  "type": "way",
+  "id": 323159483,
+  "center": {
+    "lat": -2.1460528,
+    "lon": -79.9668095
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "internet_access": "yes",
+    "name": "Sweet & Coffee",
+    "smoking": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 323159485,
+  "center": {
+    "lat": -2.1448420,
+    "lon": -79.9662141
+  },
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "name": "Comedor FIMCP"
+  }
+},
+{
+  "type": "way",
+  "id": 323159490,
+  "center": {
+    "lat": -2.1463093,
+    "lon": -79.9651077
+  },
+  "tags": {
+    "amenity": "bank",
+    "atm": "yes",
+    "building": "yes",
+    "drive_through": "no",
+    "name": "Banco del Pacífico",
+    "opening_hours": "08:30-15:30",
+    "wikipedia": "es:Banco del Pacífico"
+  }
+},
+{
+  "type": "way",
+  "id": 323159495,
+  "center": {
+    "lat": -2.1478084,
+    "lon": -79.9638021
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Tesorería ESPOL"
+  }
+},
+{
+  "type": "way",
+  "id": 323159499,
+  "center": {
+    "lat": -2.1475568,
+    "lon": -79.9678721
+  },
+  "tags": {
+    "building": "university",
+    "name": "Auditorio FCSH"
+  }
+},
+{
+  "type": "way",
+  "id": 330300949,
+  "center": {
+    "lat": -2.1487642,
+    "lon": -79.9640270
+  },
+  "tags": {
+    "access": "customers",
+    "amenity": "bicycle_parking",
+    "bicycle_parking": "stands",
+    "covered": "yes",
+    "name": "Parquo ciclovia"
+  }
+},
+{
+  "type": "way",
+  "id": 330300958,
+  "center": {
+    "lat": -2.1466347,
+    "lon": -79.9649614
+  },
+  "tags": {
+    "amenity": "parking",
+    "name": "Parqueo"
+  }
+},
+{
+  "type": "way",
+  "id": 332600145,
+  "center": {
+    "lat": -2.1420551,
+    "lon": -79.9671727
+  },
+  "tags": {
+    "addr:street": "Perimetro del Campus Espol",
+    "building": "yes",
+    "name": "Coliseo Nuevo"
+  }
+},
+{
+  "type": "way",
+  "id": 350121191,
+  "center": {
+    "lat": -2.1462802,
+    "lon": -79.9623998
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "2",
+    "name": "Laboratorio de Biomedicina",
+    "office": "research"
+  }
+},
+{
+  "type": "way",
+  "id": 350126785,
+  "center": {
+    "lat": -2.1467512,
+    "lon": -79.9632747
+  },
+  "tags": {
+    "building": "university",
+    "building:levels": "2",
+    "name": "Bloque 5K"
+  }
+},
+{
+  "type": "way",
+  "id": 352349696,
+  "center": {
+    "lat": -2.1477806,
+    "lon": -79.9637987
+  },
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "name": "Comedor con vista"
+  }
+},
+{
+  "type": "way",
+  "id": 352352502,
+  "center": {
+    "lat": -2.1518502,
+    "lon": -79.9534355
+  },
+  "tags": {
+    "access": "customers",
+    "amenity": "bicycle_parking",
+    "covered": "yes",
+    "name": "Terminal de Bicicletas"
+  }
+},
+{
+  "type": "way",
+  "id": 352352505,
+  "center": {
+    "lat": -2.1532099,
+    "lon": -79.9593881
+  },
+  "tags": {
+    "building": "yes",
+    "leisure": "sports_centre",
+    "name": "Gimnasio Estudiantes ESPOL"
+  }
+},
+{
+  "type": "way",
+  "id": 352361425,
+  "center": {
+    "lat": -2.1458243,
+    "lon": -79.9664349
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Puestos de Copias e Impresiones",
+    "shop": "copyshop"
+  }
+},
+{
+  "type": "way",
+  "id": 352361427,
+  "center": {
+    "lat": -2.1474754,
+    "lon": -79.9673155
+  },
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "name": "Comedor FSCH"
+  }
+},
+{
+  "type": "way",
+  "id": 352361430,
+  "center": {
+    "lat": -2.1477421,
+    "lon": -79.9674032
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Puestos de Copias e impresiones",
+    "shop": "copyshop"
+  }
+},
+{
+  "type": "way",
+  "id": 352361434,
+  "center": {
+    "lat": -2.1485453,
+    "lon": -79.9678898
+  },
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "name": "Comedor CELEX"
+  }
+},
+{
+  "type": "way",
+  "id": 352361436,
+  "center": {
+    "lat": -2.1440330,
+    "lon": -79.9669730
+  },
+  "tags": {
+    "building": "hangar",
+    "name": "Parque AJA!"
+  }
+},
+{
+  "type": "way",
+  "id": 352361438,
+  "center": {
+    "lat": -2.1450833,
+    "lon": -79.9653299
+  },
+  "tags": {
+    "amenity": "bus_station",
+    "building": "yes",
+    "bus": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Terminal De Buses ESPOL",
+    "public_transport": "station"
+  }
+},
+{
+  "type": "way",
+  "id": 352361441,
+  "center": {
+    "lat": -2.1434995,
+    "lon": -79.9613768
+  },
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "cuisine": "spanish",
+    "name": "Comedor FADCOM"
+  }
+},
+{
+  "type": "way",
+  "id": 352361444,
+  "center": {
+    "lat": -2.1459574,
+    "lon": -79.9658635
+  },
+  "tags": {
+    "amenity": "university",
+    "name": "Aula Satelital FICT"
+  }
+},
+{
+  "type": "way",
+  "id": 352361446,
+  "center": {
+    "lat": -2.1457295,
+    "lon": -79.9649947
+  },
+  "tags": {
+    "amenity": "university",
+    "name": "Laboratorios FICT"
+  }
+},
+{
+  "type": "way",
+  "id": 352361449,
+  "center": {
+    "lat": -2.1455830,
+    "lon": -79.9650893
+  },
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "name": "Comedor FICT"
+  }
+},
+{
+  "type": "way",
+  "id": 352361451,
+  "center": {
+    "lat": -2.1455051,
+    "lon": -79.9653639
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Edificio Administrativo FICT",
+    "office": "administrative"
+  }
+},
+{
+  "type": "way",
+  "id": 352361453,
+  "center": {
+    "lat": -2.1458879,
+    "lon": -79.9655573
+  },
+  "tags": {
+    "amenity": "university",
+    "name": "Aulas FICT - Bloque 13G"
+  }
+},
+{
+  "type": "way",
+  "id": 352627495,
+  "center": {
+    "lat": -2.1462375,
+    "lon": -79.9625335
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Laboratorios de Ictiología y Crustáceos",
+    "office": "research"
+  }
+},
+{
+  "type": "way",
+  "id": 361355532,
+  "center": {
+    "lat": -2.1451519,
+    "lon": -79.9673075
+  },
+  "tags": {
+    "amenity": "university",
+    "name": "11B - Laboratorios, Oficinas, Aulas"
+  }
+},
+{
+  "type": "way",
+  "id": 361355533,
+  "center": {
+    "lat": -2.1450036,
+    "lon": -79.9672289
+  },
+  "tags": {
+    "building": "university",
+    "name": "11B - DST-FIEC, MOOC, Comunicación FIEC, Gestión Estratégica"
+  }
+},
+{
+  "type": "way",
+  "id": 414529882,
+  "center": {
+    "lat": -2.1512304,
+    "lon": -79.9547262
+  },
+  "tags": {
+    "building": "yes",
+    "name": "laboratorio de Biología Molecular - CIBE",
+    "office": "research",
+    "opening_hours": "08:00-16:30"
+  }
+},
+{
+  "type": "way",
+  "id": 414880344,
+  "center": {
+    "lat": -2.1470848,
+    "lon": -79.9654871
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "yes",
+    "name": "APESPOL"
+  }
+},
+{
+  "type": "way",
+  "id": 414880346,
+  "center": {
+    "lat": -2.1431911,
+    "lon": -79.9657835
+  },
+  "tags": {
+    "amenity": "research_institute",
+    "name": "Laboratorio de Procesamiento Plasticos"
+  }
+},
+{
+  "type": "way",
+  "id": 414880348,
+  "center": {
+    "lat": -2.1453157,
+    "lon": -79.9647763
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Arqueología ESPOL - 13C"
+  }
+},
+{
+  "type": "way",
+  "id": 414881054,
+  "center": {
+    "lat": -2.1469085,
+    "lon": -79.9628364
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Decanato FIMCM"
+  }
+},
+{
+  "type": "way",
+  "id": 414881055,
+  "center": {
+    "lat": -2.1467922,
+    "lon": -79.9628847
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Laboratorio de Computación"
+  }
+},
+{
+  "type": "way",
+  "id": 414881056,
+  "center": {
+    "lat": -2.1467060,
+    "lon": -79.9627734
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "2",
+    "name": "Oficinas profesores FIMCM"
+  }
+},
+{
+  "type": "way",
+  "id": 415122359,
+  "center": {
+    "lat": -2.1505615,
+    "lon": -79.9577929
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "2",
+    "name": "Bloque 3D - FCV"
+  }
+},
+{
+  "type": "way",
+  "id": 415122361,
+  "center": {
+    "lat": -2.1508499,
+    "lon": -79.9578152
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "2",
+    "name": "SEBIOCA - 3C"
+  }
+},
+{
+  "type": "way",
+  "id": 415122363,
+  "center": {
+    "lat": -2.1514958,
+    "lon": -79.9571658
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "2",
+    "name": "Bloque 3B"
+  }
+},
+{
+  "type": "way",
+  "id": 415134132,
+  "center": {
+    "lat": -2.1509729,
+    "lon": -79.9536218
+  },
+  "tags": {
+    "building": "greenhouse",
+    "building:levels": "1",
+    "name": "Invernadero - CIBE"
+  }
+},
+{
+  "type": "way",
+  "id": 415134134,
+  "center": {
+    "lat": -2.1509795,
+    "lon": -79.9537055
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Labotario Biorremediación - CIBE",
+    "office": "research"
+  }
+},
+{
+  "type": "way",
+  "id": 415137749,
+  "center": {
+    "lat": -2.1484728,
+    "lon": -79.9681584
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "3",
+    "name": "Bloque 8C"
+  }
+},
+{
+  "type": "way",
+  "id": 415137750,
+  "center": {
+    "lat": -2.1477717,
+    "lon": -79.9688006
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Decanato FCSH - 8A"
+  }
+},
+{
+  "type": "way",
+  "id": 415336037,
+  "center": {
+    "lat": -2.1465793,
+    "lon": -79.9629859
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Laboratorios ALFA y BETA de Biología",
+    "office": "research"
+  }
+},
+{
+  "type": "way",
+  "id": 415337517,
+  "center": {
+    "lat": -2.1464313,
+    "lon": -79.9625295
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Centro de Servicios para la Acuicultura - CSA",
+    "office": "research"
+  }
+},
+{
+  "type": "way",
+  "id": 415338173,
+  "center": {
+    "lat": -2.1461447,
+    "lon": -79.9642618
+  },
+  "tags": {
+    "building": "yes",
+    "building:levels": "1",
+    "name": "Departamento de Estadística"
+  }
+},
+{
+  "type": "way",
+  "id": 415338175,
+  "center": {
+    "lat": -2.1465644,
+    "lon": -79.9651772
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "yes",
+    "building:levels": "1",
+    "height": "3",
+    "internet_access": "yes",
+    "name": "Gerencia de Tecnologías y Sistema de Información GTSI"
+  }
+},
+{
+  "type": "way",
+  "id": 415339939,
+  "center": {
+    "lat": -2.1487891,
+    "lon": -79.9649529
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Vículos con la Colectividad"
+  }
+},
+{
+  "type": "way",
+  "id": 415340911,
+  "center": {
+    "lat": -2.1503742,
+    "lon": -79.9546381
+  },
+  "tags": {
+    "amenity": "school",
+    "name": "COPOL - Educación Básica"
+  }
+},
+{
+  "type": "way",
+  "id": 442950809,
+  "center": {
+    "lat": -2.1459773,
+    "lon": -79.9663112
+  },
+  "tags": {
+    "building": "university",
+    "building:levels": "1",
+    "height": "3",
+    "name": "FEPOL"
+  }
+},
+{
+  "type": "way",
+  "id": 462489439,
+  "center": {
+    "lat": -2.1472707,
+    "lon": -79.9669590
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Bloque 9C"
+  }
+},
+{
+  "type": "way",
+  "id": 582701231,
+  "center": {
+    "lat": -2.1430127,
+    "lon": -79.9671388
+  },
+  "tags": {
+    "building": "university",
+    "building:levels": "2",
+    "name": "Bienestar Estudiantil"
+  }
+},
+{
+  "type": "way",
+  "id": 584436188,
+  "center": {
+    "lat": -2.1440494,
+    "lon": -79.9660413
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "yes",
+    "name": "Bloque 12I"
+  }
+},
+{
+  "type": "way",
+  "id": 584436190,
+  "center": {
+    "lat": -2.1441733,
+    "lon": -79.9665200
+  },
+  "tags": {
+    "amenity": "university",
+    "area": "yes",
+    "name": "Auditorio FIMCP"
+  }
+},
+{
+  "type": "way",
+  "id": 584780235,
+  "center": {
+    "lat": -2.1467903,
+    "lon": -79.9662598
+  },
+  "tags": {
+    "access": "yes",
+    "amenity": "parking",
+    "fee": "no",
+    "name": "Parqueadero",
+    "parking": "surface",
+    "supervised": "yes",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 585058853,
+  "center": {
+    "lat": -2.1435835,
+    "lon": -79.9620952
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "yes",
+    "building:levels": "3",
+    "internet_access": "yes",
+    "name": "FADCOM"
+  }
+},
+{
+  "type": "way",
+  "id": 585058870,
+  "center": {
+    "lat": -2.1440638,
+    "lon": -79.9623966
+  },
+  "tags": {
+    "amenity": "university",
+    "building": "yes",
+    "building:levels": "2",
+    "name": "Decanato FADCOM"
+  }
+},
+{
+  "type": "way",
+  "id": 947232892,
+  "center": {
+    "lat": -2.1451604,
+    "lon": -79.9672304
+  },
+  "tags": {
+    "building": "yes",
+    "name": "11B - Laboratorios de Computación FIEC"
+  }
+},
+{
+  "type": "way",
+  "id": 947232896,
+  "center": {
+    "lat": -2.1460864,
+    "lon": -79.9672343
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Auditorio Pedro Franco Dávila - 9I"
+  }
+},
+{
+  "type": "way",
+  "id": 1059294320,
+  "center": {
+    "lat": -2.1449627,
+    "lon": -79.9677512
+  },
+  "tags": {
+    "amenity": "university",
+    "name": "Auditorio FIEC"
+  }
+},
+{
+  "type": "way",
+  "id": 1101728170,
+  "center": {
+    "lat": -2.1436341,
+    "lon": -79.9663746
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Edificio de postgrado STEM ESPOL"
+  }
+},
+{
+  "type": "way",
+  "id": 1396290771,
+  "center": {
+    "lat": -2.1450703,
+    "lon": -79.9663119
+  },
+  "tags": {
+    "building": "house",
+    "name": "Centro de Estudiante Ceibo - FEPOL"
+  }
+},
+{
+  "type": "way",
+  "id": 1396290779,
+  "center": {
+    "lat": -2.1531129,
+    "lon": -79.9582853
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Tribuna Estadio ESPOL"
+  }
+},
+{
+  "type": "way",
+  "id": 1437016808,
+  "center": {
+    "lat": -2.1432507,
+    "lon": -79.9752488
+  },
+  "tags": {
+    "building": "fire_station",
+    "layer": "1",
+    "name": "Bomberos Guayaquil - Academia Crnl. Gabriel Gómez Sanchez"
+  }
+},
+{
+  "type": "way",
+  "id": 1556599083,
+  "center": {
+    "lat": -2.1531377,
+    "lon": -79.9566787
+  },
+  "tags": {
+    "building": "residential",
+    "name": "Residencias estudiantiles"
+  }
+},
+{
+  "type": "way",
+  "id": 1564488634,
+  "center": {
+    "lat": -2.1451108,
+    "lon": -79.9650404
+  },
+  "tags": {
+    "amenity": "university",
+    "education": "university",
+    "name": "Arqueología - 13D"
+  }
+},
+{
+  "type": "way",
+  "id": 1574312806,
+  "center": {
+    "lat": -2.1529498,
+    "lon": -79.9569061
+  },
+  "tags": {
+    "building": "residential",
+    "name": "Residencias estudiantiles"
+  }
+},
+{
+  "type": "way",
+  "id": 1574312807,
+  "center": {
+    "lat": -2.1534693,
+    "lon": -79.9566488
+  },
+  "tags": {
+    "amenity": "shelter",
+    "bench": "yes",
+    "building": "yes",
+    "name": "Glorieta Residencias ESPOL",
+    "shelter_type": "gazebo"
+  }
+},
+{
+  "type": "way",
+  "id": 1574313568,
+  "center": {
+    "lat": -2.1453224,
+    "lon": -79.9693791
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Laboratorio de Operaciones Unitarias “LOPU”",
+    "office": "research"
+  }
+},
+{
+  "type": "way",
+  "id": 1574317597,
+  "center": {
+    "lat": -2.1423251,
+    "lon": -79.9678294
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Caseta de bodega"
+  }
+},
+{
+  "type": "way",
+  "id": 1574317599,
+  "center": {
+    "lat": -2.1418795,
+    "lon": -79.9677704
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Caseta"
+  }
+},
+{
+  "type": "way",
+  "id": 1574338215,
+  "center": {
+    "lat": -2.1481500,
+    "lon": -79.9687945
+  },
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "name": "Restaurante La Jama FCSH"
+  }
+},
+{
+  "type": "way",
+  "id": 1574711866,
+  "center": {
+    "lat": -2.1528595,
+    "lon": -79.9582645
+  },
+  "tags": {
+    "building": "yes",
+    "name": "Caseta"
+  }
+}
+
+  ]
+}

@@ -280,7 +280,7 @@ export const useParki = create<Store>((set, get) => {
       set((s) => {
         const lotes = { ...s.lotes };
         PARQUEADEROS.forEach((p) => { if (!lotes[p.id].cerrado) lotes[p.id] = { ...lotes[p.id], ocupados: objetivo(p.id, min) }; });
-        return { hora: min, lotes, eventos: conEvento(s, ev('camara', `Reloj de demo movido a las ${fmtHora(min)}`)) };
+        return { hora: min, lotes, eventos: MODO_GUION ? s.eventos : conEvento(s, ev('camara', `Reloj de demo movido a las ${fmtHora(min)}`)) };
       }),
     setSim: (simActiva) => set({ simActiva }),
     setVelocidad: (velocidad) => set({ velocidad }),

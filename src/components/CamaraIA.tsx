@@ -35,13 +35,15 @@ export default function CamaraIA({ loteId, indice, compacta = false }: { loteId:
               const x = x0 + col * sw, y = y0s[fila];
               const ocupado = hash(i + indice * 50 + loteId.length) < ratio;
               const pref = indice === 0 && fila === 0 && col === 0;
-              const malAqui = malEst && indice === 0 && fila === 1 && (col === 3);
+              // el auto mal estacionado ocupa las plazas 3 y 4 de la fila inferior: se dibuja una sola vez, cruzado sobre la línea
+              const malZona = malEst && indice === 0 && fila === 1 && (col === 3 || col === 4);
+              const malAqui = malEst && indice === 0 && fila === 1 && col === 3;
               const conf = (0.88 + hash(i * 3 + indice) * 0.11).toFixed(2);
               return (
                 <g key={i}>
                   <rect x={x} y={y} width={sw} height={sh} fill={pref ? '#1e3a8a33' : 'none'} stroke="#e5e7eb" strokeWidth="2" opacity="0.8" />
                   {pref && <text x={x + sw / 2} y={y + sh / 2 + 8} textAnchor="middle" fontSize="26" fill="#93c5fd">♿</text>}
-                  {ocupado && !malAqui && (
+                  {ocupado && !malZona && (
                     <>
                       <rect x={x + 10} y={y + 12} width={sw - 20} height={sh - 24} rx="9" fill={COLORES[Math.floor(hash(i + 7 * indice) * COLORES.length)]} />
                       <rect x={x + 15} y={y + 30} width={sw - 30} height="22" rx="4" fill="#0f172a" opacity="0.55" />
@@ -49,12 +51,16 @@ export default function CamaraIA({ loteId, indice, compacta = false }: { loteId:
                       {!compacta && <text x={x + 8} y={y + 6} fontSize="10" fill="#fecaca" fontFamily="monospace">auto {conf}</text>}
                     </>
                   )}
-                  {!ocupado && !malAqui && <rect x={x + 6} y={y + 8} width={sw - 12} height={sh - 16} fill="#22c55e22" stroke="#22c55e" strokeWidth="2" strokeDasharray="6 4" />}
+                  {!ocupado && !malZona && <rect x={x + 6} y={y + 8} width={sw - 12} height={sh - 16} fill="#22c55e22" stroke="#22c55e" strokeWidth="2" strokeDasharray="6 4" />}
                   {malAqui && (
                     <>
-                      <rect x={x + 30} y={y + 14} width={sw + 4} height={sh - 28} rx="9" fill="#e2e8f0" transform={`rotate(-12 ${x + 64} ${y + 52})`} />
-                      <rect x={x + 20} y={y + 4} width={sw + 26} height={sh - 8} fill="#f59e0b22" stroke="#f59e0b" strokeWidth="3" />
-                      <text x={x + 22} y={y - 2} fontSize="11" fill="#fde68a" fontFamily="monospace">mal estacionado 0.91</text>
+                      <g transform={`rotate(-16 ${x + sw} ${y + sh / 2})`}>
+                        <rect x={x + sw - 30} y={y + 10} width="60" height={sh - 20} rx="12" fill="#c81e1e" />
+                        <rect x={x + sw - 22} y={y + 22} width="44" height="20" rx="6" fill="#0f172a" opacity="0.7" />
+                        <rect x={x + sw - 21} y={y + sh - 38} width="42" height="16" rx="6" fill="#0f172a" opacity="0.55" />
+                      </g>
+                      <rect x={x + 4} y={y + 4} width={sw * 2 - 8} height={sh - 8} fill="#f59e0b22" stroke="#f59e0b" strokeWidth="3" />
+                      <text x={x + 6} y={y - 4} fontSize="11" fill="#fde68a" fontFamily="monospace">mal estacionado 0.91 · ocupa 2 plazas</text>
                     </>
                   )}
                 </g>

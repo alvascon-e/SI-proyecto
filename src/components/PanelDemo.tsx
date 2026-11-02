@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FlaskConical, X } from 'lucide-react';
 import { PARQUEADEROS } from '../data/parqueaderos';
-import { fmtHora, useParki } from '../store';
+import { MODO_GUION, fmtHora, useParki } from '../store';
 
 // Panel para disparar eventos simulados durante la demo (Shift + D lo muestra/oculta).
 export default function PanelDemo() {
@@ -16,7 +16,7 @@ export default function PanelDemo() {
     window.addEventListener('keydown', k);
     return () => window.removeEventListener('keydown', k);
   }, []);
-  if (oculto) return null;
+  if (oculto || MODO_GUION) return null;
   const p = PARQUEADEROS.find((x) => x.id === lote)!;
   const l = s.lotes[lote];
 

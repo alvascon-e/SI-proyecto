@@ -494,3 +494,12 @@ body:has(.movil) .demo-fab { bottom: 92px; }
 .tabbar a svg { filter: drop-shadow(0 1px 1.5px rgba(15, 35, 64, 0.35)); }
 .tabbar a.active { background: rgba(255, 255, 255, 0.22); }
 .tabbar-velo { height: 76px; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+
+/* modo guion (grabación del video): espacio de la isla dinámica y barra de estado de iOS */
+.status-ios { position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: min(430px, 100vw); height: 50px; z-index: 2500; display: flex; justify-content: space-between; align-items: center; padding: 6px 30px 0 34px; font-size: 16px; font-weight: 700; color: var(--navy); background: rgba(238, 243, 251, 0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.status-ic { display: flex; align-items: center; gap: 6px; }
+.status-ic svg { fill: currentColor; }
+body.guion .movil { padding-top: 50px; }
+body.guion .m-header.con-volver { top: 50px; }
+body.guion .aviso { top: 56px; }
+body.guion .login { padding-top: 70px; }

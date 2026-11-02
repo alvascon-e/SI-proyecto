@@ -1,4 +1,5 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom';
 import { MonitorSmartphone, LayoutDashboard } from 'lucide-react';
 import { Logo } from './components/Logo';
 import PanelDemo from './components/PanelDemo';
@@ -20,6 +21,13 @@ import Analitica from './admin/Analitica';
 import Incidencias from './admin/Incidencias';
 import Gestion from './admin/Gestion';
 
+// cada pantalla nueva empieza arriba, como en una app nativa
+function ArribaAlNavegar() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
+
 function Portada() {
   return (
     <div className="portada">
@@ -37,6 +45,7 @@ function Portada() {
 export default function App() {
   return (
     <BrowserRouter>
+      <ArribaAlNavegar />
       <Routes>
         <Route path="/" element={<Portada />} />
         <Route path="/app/login" element={<Login />} />

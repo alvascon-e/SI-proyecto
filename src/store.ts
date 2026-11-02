@@ -32,7 +32,11 @@ export interface Compartido {
 
 const CLAVE = 'parkipol-estado-v2';
 const VERSION = 2;
-const uid = () => Math.random().toString(36).slice(2, 9);
+// Modo guion (?guion): azar con semilla fija y estado expuesto para grabar el video.
+export const MODO_GUION = typeof location !== 'undefined' && new URLSearchParams(location.search).has('guion');
+let semilla = 20261102;
+const azar = MODO_GUION ? () => { semilla = (semilla * 1664525 + 1013904223) >>> 0; return semilla / 4294967296; } : Math.random;
+const uid = () => azar().toString(36).slice(2, 9);
 export const lotePorId = (id: string) => PARQUEADEROS.find((p) => p.id === id)!;
 
 export function objetivo(id: string, hora: number) {
@@ -229,7 +233,7 @@ export const useParki = create<Store>((set, get) => {
         for (const p of PARQUEADEROS) {
           const l = lotes[p.id];
           const meta = l.cerrado ? 0 : objetivo(p.id, hora);
-          const ruido = (Math.random() - 0.5) * 3;
+          const ruido = (azar() - 0.5) * 3;
           let delta = Math.round((meta - l.ocupados) * (l.cerrado ? 0.12 : 0.22) * Math.min(3, s.velocidad) + ruido);
           if (l.cerrado && delta > 0) delta = 0;
           const ocupados = Math.max(0, Math.min(p.capacidad, l.ocupados + delta));
@@ -251,15 +255,15 @@ export const useParki = create<Store>((set, get) => {
 
         // un movimiento visible en el feed por tick (detección de cámara)
         if (movimientos.length) {
-          const m = movimientos[Math.floor(Math.random() * movimientos.length)];
+          const m = movimientos[Math.floor(azar() * movimientos.length)];
           const p = lotePorId(m.id);
-          const cam = `CAM-${m.id.toUpperCase().slice(0, 6)}-0${1 + Math.floor(Math.random() * p.camaras)}`;
+          const cam = `CAM-${m.id.toUpperCase().slice(0, 6)}-0${1 + Math.floor(azar() * p.camaras)}`;
           eventos = [ev(m.delta > 0 ? 'entrada' : 'salida', `${cam} · ${m.delta > 0 ? 'ingresaron' : 'salieron'} ${Math.abs(m.delta)} vehículo${Math.abs(m.delta) > 1 ? 's' : ''} en ${p.nombre}`, m.id), ...eventos];
         }
 
         // de vez en cuando la visión por computadora detecta un auto mal estacionado
-        if (Math.random() < 0.012) {
-          const p = PARQUEADEROS[Math.floor(Math.random() * PARQUEADEROS.length)];
+        if (!MODO_GUION && azar() < 0.012) {
+          const p = PARQUEADEROS[Math.floor(azar() * PARQUEADEROS.length)];
           incidencias = [{ id: uid(), parqueaderoId: p.id, tipo: 'mal_estacionado', descripcion: 'Detección automática: vehículo ocupando dos plazas.', origen: 'camara', estado: 'nueva', creada: Date.now() }, ...incidencias];
           eventos = [ev('incidencia', `Visión por computadora: vehículo mal estacionado en ${p.nombre}`, p.id), ...eventos];
         }
@@ -368,3 +372,6 @@ setInterval(() => {
     }
   } catch { /* noop */ }
 }, 1200);
+
+// en modo guion, el estado queda accesible para preparar cada toma desde el grabador
+if (MODO_GUION) (window as unknown as { __parki: typeof useParki }).__parki = useParki;

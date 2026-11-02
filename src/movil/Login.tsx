@@ -27,7 +27,7 @@ export default function Login() {
     <div className="movil-marco">
       <div className="movil login">
         <div className="login-hero">
-          <Logo size={54} />
+          <Logo size={46} vertical />
           <p>Encuentra tu espacio de parqueo libre en tiempo real.</p>
         </div>
         <div className="seg">

@@ -13,7 +13,7 @@ export default function Gestion() {
   return (
     <div>
       <div className="fila-sb">
-        <h1 className="a-titulo">Gestión</h1>
+        <div className="a-head"><h1 className="a-titulo">Gestión</h1><p className="muted">Parqueaderos, publicidad e ingresos de la plataforma.</p></div>
         <div className="seg">
           <button className={tab === 'parqueaderos' ? 'on' : ''} onClick={() => setTab('parqueaderos')}>Parqueaderos</button>
           <button className={tab === 'anuncios' ? 'on' : ''} onClick={() => setTab('anuncios')}>Anuncios</button>
@@ -81,7 +81,7 @@ export default function Gestion() {
               <ResponsiveContainer width="100%" height={240}>
                 <BarChart data={[{ f: 'Suscripciones', v: +ingresosPlanes.toFixed(2) }, { f: 'Publicidad', v: ingresosAds }, { f: 'Licencia (mes)', v: 150 }]}>
                   <XAxis dataKey="f" tick={{ fontSize: 11 }} /><YAxis tick={{ fontSize: 11 }} /><Tooltip formatter={(v) => [`$${v}`, 'Monto']} />
-                  <Bar dataKey="v" fill="#2d68d6" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="v" fill="#0066dc" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>

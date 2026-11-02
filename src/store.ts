@@ -3,7 +3,7 @@ import { PARQUEADEROS } from './data/parqueaderos';
 import { ANUNCIOS_INICIALES, PLANES, TIPOS_INCIDENCIA, curvaHora } from './data/catalogos';
 import { POPULARIDAD } from './data/historico';
 import type {
-  Anuncio, Calificacion, Categoria, EstadoIncidencia, EstadoLote, Evento, Incidencia, Notificacion, Pago, Plan,
+  Admin, MensajeGuardia, Anuncio, Calificacion, Categoria, EstadoIncidencia, EstadoLote, Evento, Incidencia, Notificacion, Pago, Plan,
   TipoEvento, TipoIncidencia, Usuario,
 } from './types';
 
@@ -24,13 +24,14 @@ export interface Compartido {
   calificaciones: Calificacion[];
   anuncios: Anuncio[];
   usuario: Usuario | null;
+  admin: Admin | null;
   favorito: string | null;
   notificaciones: Notificacion[];
   serie: { hora: number; ocupacion: number }[];
 }
 
-const CLAVE = 'parkipol-estado-v1';
-const VERSION = 1;
+const CLAVE = 'parkipol-estado-v2';
+const VERSION = 2;
 const uid = () => Math.random().toString(36).slice(2, 9);
 export const lotePorId = (id: string) => PARQUEADEROS.find((p) => p.id === id)!;
 
@@ -64,7 +65,7 @@ function estadoInicial(): Compartido {
   return {
     version: VERSION, hora, simActiva: true, velocidad: 1, lotes, incidencias,
     eventos: [{ id: uid(), ts: ahora, tipo: 'camara', texto: 'Sistema iniciado · 34 cámaras con visión por computadora en línea' }],
-    pagos, calificaciones, anuncios: ANUNCIOS_INICIALES, usuario: null, favorito: null, notificaciones: [],
+    pagos, calificaciones, anuncios: ANUNCIOS_INICIALES, usuario: null, admin: null, favorito: null, notificaciones: [],
     serie: Array.from({ length: 40 }, (_, k) => {
       const h = hora - (40 - k) * 3;
       const tot = PARQUEADEROS.reduce((a, p) => a + objetivo(p.id, h), 0);
@@ -87,6 +88,9 @@ function cargar(): Compartido {
 interface Acciones {
   login: (nombre: string, correo: string, categoria: Categoria) => void;
   logout: () => void;
+  loginAdmin: (correo: string) => void;
+  logoutAdmin: () => void;
+  notificarGuardias: (id: string) => void;
   consumirConsulta: () => boolean;
   reportar: (d: { parqueaderoId: string; tipo: TipoIncidencia; descripcion: string; foto?: string }) => void;
   estadoIncidencia: (id: string, estado: EstadoIncidencia) => void;
@@ -130,6 +134,34 @@ export const useParki = create<Store>((set, get) => {
     login: (nombre, correo, categoria) =>
       set({ usuario: { nombre, correo, categoria, plan: 'gratis', consultasHoy: 0 } }),
     logout: () => set({ usuario: null }),
+    loginAdmin: (correo) => set({ admin: { nombre: 'Ing. Carlos Hidalgo', correo } }),
+    logoutAdmin: () => set({ admin: null }),
+
+    // El centro de control avisa al grupo de guardias; el más cercano responde y luego reporta la resolución.
+    notificarGuardias: (id) => {
+      const inc = get().incidencias.find((i) => i.id === id);
+      if (!inc || inc.estado === 'resuelta') return;
+      const lote = lotePorId(inc.parqueaderoId);
+      const msg = (de: MensajeGuardia['de'], autor: string, texto: string): MensajeGuardia => ({ id: uid(), ts: Date.now(), de, autor, texto });
+      const agregar = (m: MensajeGuardia, cambios: Partial<Incidencia> = {}) =>
+        set((s) => ({ incidencias: s.incidencias.map((i) => (i.id === id ? { ...i, ...cambios, mensajes: [...(i.mensajes ?? []), m] } : i)) }));
+      const guardias = ['Guardia R. Salazar', 'Guardia M. Quimí', 'Guardia J. Villón', 'Guardia L. Tomalá'];
+      const guardia = guardias[lote.nombre.length % guardias.length];
+      agregar(msg('control', 'Centro de control', `Atención en ${lote.nombre}: ${TIPOS_INCIDENCIA[inc.tipo].toLowerCase()}. ${inc.descripcion.trim().replace(/[.\s]*$/, '.')} El guardia más cercano, por favor acérquese y confirme.`), { estado: 'en_atencion' });
+      set((s) => ({ eventos: conEvento(s, ev('incidencia', `Grupo de seguridad notificado: ${lote.nombre}`, lote.id)) }));
+      setTimeout(() => agregar(msg('guardia', guardia, `Recibido, estoy en la garita más cercana. Voy para ${lote.nombre.replace(/^Parqueadero |^Parqueo /, '')}, llego en 2 min.`), { guardia }), 4000);
+      setTimeout(() => {
+        const cierre = inc.tipo === 'mal_estacionado' ? 'Ubiqué al conductor y movió el vehículo. Plazas liberadas.'
+          : inc.tipo === 'obstruccion' ? 'Se retiró el objeto. El paso quedó despejado.'
+          : inc.tipo === 'dano' ? 'Zona señalizada con conos. Se reportó a mantenimiento para la reparación.'
+          : 'Situación verificada y controlada. Sin novedad.';
+        agregar(msg('guardia', guardia, `Resuelto: ${cierre}`), { estado: 'resuelta' });
+        set((s) => ({
+          eventos: conEvento(s, ev('apertura', `${guardia} resolvió la incidencia en ${lote.nombre}`, lote.id)),
+          notificaciones: inc.origen === 'usuario' ? notif(s, 'Incidencia resuelta', `Seguridad atendió tu reporte en ${lote.nombre}. ¡Gracias!`, 'ok') : s.notificaciones,
+        }));
+      }, 13000);
+    },
 
     consumirConsulta: () => {
       const u = get().usuario;
@@ -297,12 +329,12 @@ export const useParki = create<Store>((set, get) => {
     horaPico: () => {
       get().setHora(9 * 60 + 55);
     },
-    reiniciar: () => set({ ...estadoInicial() }),
+    reiniciar: () => set((s) => ({ ...estadoInicial(), usuario: s.usuario, admin: s.admin })),
   };
 });
 
 // ---------------- sincronización entre pestañas ----------------
-const CAMPOS: (keyof Compartido)[] = ['version', 'hora', 'simActiva', 'velocidad', 'lotes', 'incidencias', 'eventos', 'pagos', 'calificaciones', 'anuncios', 'usuario', 'favorito', 'notificaciones', 'serie'];
+const CAMPOS: (keyof Compartido)[] = ['version', 'hora', 'simActiva', 'velocidad', 'lotes', 'incidencias', 'eventos', 'pagos', 'calificaciones', 'anuncios', 'usuario', 'admin', 'favorito', 'notificaciones', 'serie'];
 let aplicandoRemoto = false;
 
 function guardar(s: Compartido) {

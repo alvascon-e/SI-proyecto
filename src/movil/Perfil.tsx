@@ -11,7 +11,7 @@ export default function Perfil() {
   const mios = pagos.filter((p) => p.cliente === u.nombre);
   return (
     <div>
-      <header className="m-header"><div><div className="muted">Tu cuenta</div><h1>{u.nombre}</h1></div></header>
+      <header className="m-header"><div><div className="eyebrow">Tu cuenta</div><h1>{u.nombre}</h1></div></header>
       <div className="pad">
         <div className="perfil-card">
           <div className="avatar">{u.nombre.split(' ').map((x) => x[0]).slice(0, 2).join('')}</div>
@@ -20,7 +20,7 @@ export default function Perfil() {
         <div className="perfil-card col">
           <div className="fila-sb"><b>Plan {PLANES[u.plan].nombre}</b><button className="btn primario chico" onClick={() => nav('/app/planes')}>{u.plan === 'premium' ? 'Ver planes' : 'Mejorar plan'}</button></div>
           <div className="muted">{lim === null ? 'Consultas ilimitadas' : `${u.consultasHoy} de ${lim} consultas usadas hoy`}</div>
-          {lim !== null && <div className="barra"><i style={{ width: `${Math.min(100, (u.consultasHoy / lim) * 100)}%`, background: '#2d68d6' }} /></div>}
+          {lim !== null && <div className="barra"><i style={{ width: `${Math.min(100, (u.consultasHoy / lim) * 100)}%`, background: '#0066dc' }} /></div>}
         </div>
         <div className="perfil-card col">
           <b><Heart size={15} /> Parqueadero favorito</b>

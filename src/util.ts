@@ -10,7 +10,7 @@ export function nivel(p: Parqueadero, l: EstadoLote): Nivel {
   const r = l.ocupados / p.capacidad;
   return r >= 0.92 ? 'lleno' : r >= 0.72 ? 'medio' : 'libre';
 }
-export const COLOR_NIVEL: Record<Nivel, string> = { libre: '#16a34a', medio: '#f59e0b', lleno: '#dc2626', cerrado: '#64748b' };
+export const COLOR_NIVEL: Record<Nivel, string> = { libre: '#1f9d55', medio: '#e08a00', lleno: '#d93a3a', cerrado: '#8a93a3' };
 export const TEXTO_NIVEL: Record<Nivel, string> = { libre: 'Disponible', medio: 'Llenándose', lleno: 'Casi lleno', cerrado: 'Cerrado' };
 
 export function metros(a: [number, number], b: [number, number]) {

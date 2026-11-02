@@ -51,7 +51,7 @@ export default function Ruta() {
             <div className="nav-grande">{minutos} min <small>· {(restante / 1000).toFixed(1)} km</small></div>
             <div className="muted">Sigue la ruta azul por las vías internas del campus</div>
             <div className="nav-libres" style={{ color: COLOR_NIVEL[nivel(p, l)] }}>{libres(p, l)} espacios libres en destino · actualizado en vivo</div>
-            <div className="barra"><i style={{ width: `${avance * 100}%`, background: '#2d68d6' }} /></div>
+            <div className="barra"><i style={{ width: `${avance * 100}%`, background: '#0066dc' }} /></div>
             <button className="btn" onClick={() => setAvance(1)}>Simular llegada</button>
           </div>
         ) : !hecho ? (

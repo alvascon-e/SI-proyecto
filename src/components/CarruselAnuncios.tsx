@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Coffee, Landmark, Printer, Wrench, type LucideIcon } from 'lucide-react';
 import { useParki } from '../store';
+
+const ICONOS: Record<string, LucideIcon> = { ad1: Coffee, ad2: Printer, ad3: Wrench, ad4: Landmark };
 
 // Carrusel discreto: rota solo cada 6 s, sin ventanas emergentes (funcionalidad 9).
 export default function CarruselAnuncios() {
@@ -18,19 +20,24 @@ export default function CarruselAnuncios() {
   const a = n ? anuncios[i % n] : null;
   useEffect(() => { if (a) impresion(a.id); }, [a?.id]);
   if (!a) return null;
+  const Icono = ICONOS[a.id] ?? Coffee;
   return (
-    <div className="carrusel" style={{ background: a.color }}>
-      <button className="flecha" onClick={() => setI((i - 1 + n) % n)} aria-label="Anterior"><ChevronLeft size={16} /></button>
+    <div className="carrusel">
       <div className="carrusel-cuerpo" onClick={() => clic(a.id)}>
-        <span className="carrusel-emoji">{a.emoji}</span>
-        <div>
+        <span className="carrusel-icono" style={{ background: a.color }}><Icono size={18} /></span>
+        <div className="carrusel-txt">
           <div className="carrusel-titulo">{a.titulo}</div>
           <div className="carrusel-texto">{a.cliente} · {a.texto}</div>
         </div>
       </div>
-      <button className="flecha" onClick={() => setI((i + 1) % n)} aria-label="Siguiente"><ChevronRight size={16} /></button>
-      <span className="carrusel-tag">Anuncio</span>
-      <div className="carrusel-puntos">{anuncios.map((x, k) => <i key={x.id} className={k === i % n ? 'on' : ''} />)}</div>
+      <div className="carrusel-pie">
+        <span className="carrusel-tag">Patrocinado</span>
+        <div className="carrusel-nav">
+          <button className="flecha" onClick={() => setI((i - 1 + n) % n)} aria-label="Anterior"><ChevronLeft size={14} /></button>
+          <div className="carrusel-puntos">{anuncios.map((x, k) => <button key={x.id} className={k === i % n ? 'on' : ''} onClick={() => setI(k)} aria-label={`Anuncio ${k + 1}`} />)}</div>
+          <button className="flecha" onClick={() => setI((i + 1) % n)} aria-label="Siguiente"><ChevronRight size={14} /></button>
+        </div>
+      </div>
     </div>
   );
 }

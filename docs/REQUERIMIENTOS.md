@@ -34,13 +34,14 @@ Leyenda: ✅ implementado · 🟡 simulado (funciona con datos o servicios de pr
 | RF-12 | Filtrar la disponibilidad por categoría de usuario y tipo de espacio | 6 | ✅ |
 | RF-13 | Registrar e iniciar sesión con correo institucional, asignando un perfil | 7 | ✅ 🟡 sin autenticación real |
 | RF-14 | Permitir al usuario reportar incidencias con foto y descripción | 8 | ✅ |
-| RF-15 | Notificar al personal en tiempo real y gestionar el estado de la incidencia (nueva, en atención, resuelta) | 8 | ✅ |
+| RF-15 | Notificar al grupo de guardias en tiempo real, recibir su confirmación y resolución, y gestionar el estado de la incidencia (nueva, en atención, resuelta) | 8 | ✅ respuestas 🟡 simuladas |
 | RF-16 | Permitir calificar la experiencia en el parqueadero | 8 | ✅ |
 | RF-17 | Mostrar anuncios en un carrusel fijo y discreto, con rotación automática y navegación manual, sin ventanas emergentes | 9 | ✅ |
 | RF-18 | Administrar anuncios y medir impresiones, clics y CTR | 9 | ✅ |
 | RF-19 | Procesar pagos de planes con resumen, confirmación y comprobante | 10 | 🟡 pasarela de prueba |
 | RF-20 | Gestionar planes (Gratis, Plus, Premium) con límite diario de consultas y contador en tiempo real | 11 | ✅ |
 | RF-21 | Cerrar o habilitar parqueaderos por eventos y notificar a los usuarios | Canvas | ✅ |
+| RF-23 | Acceso al panel administrativo con inicio de sesión institucional | Canvas | ✅ 🟡 sin autenticación real |
 | RF-22 | Mostrar ingresos por suscripciones, publicidad y licencia institucional | Canvas | ✅ datos 🟡 |
 
 ## 3. Requerimientos no funcionales

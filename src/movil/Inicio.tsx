@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Clock3 } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import MapaCampus from '../components/MapaCampus';
 import CarruselAnuncios from '../components/CarruselAnuncios';
 import { PARQUEADEROS } from '../data/parqueaderos';
@@ -21,51 +21,60 @@ export default function Inicio() {
     .sort((a, b) => libres(b, lotes[b.id]) - libres(a, lotes[a.id]));
   const abrir = (id: string) => consultar(() => nav(`/app/p/${id}`));
 
+  const dia = new Date().toLocaleDateString('es-EC', { weekday: 'long', day: 'numeric', month: 'long' });
   return (
     <div>
       <header className="m-header">
         <div>
-          <div className="muted">Hola, {u.nombre.split(' ')[0]} · {CATEGORIAS[u.categoria]}</div>
-          <h1>Parqueaderos ahora</h1>
+          <div className="eyebrow">{dia} · {fmtHora(hora)}</div>
+          <h1>Hola, {u.nombre.split(' ')[0]}</h1>
+          <div className="m-sub">{CATEGORIAS[u.categoria]} · ESPOL</div>
         </div>
-        <div className="cuota" onClick={() => nav('/app/planes')}>
-          <Clock3 size={13} /> {fmtHora(hora)}
+        <button className="cuota" onClick={() => nav('/app/planes')}>
           <span className={`plan-tag ${u.plan}`}>{PLANES[u.plan].nombre}</span>
-          <small>{lim === null ? 'consultas ilimitadas' : `${u.consultasHoy}/${lim} consultas`}</small>
-        </div>
+          <small>{lim === null ? 'Consultas ilimitadas' : `${u.consultasHoy} de ${lim} consultas`}</small>
+        </button>
       </header>
-      <div className="chips pad">
-        <button className={`chip${soloMios ? ' on' : ''}`} onClick={() => setSoloMios(true)}>Autorizados para mí</button>
-        <button className={`chip${!soloMios ? ' on' : ''}`} onClick={() => setSoloMios(false)}>Todos</button>
+      <div className="pad">
+        <div className="segmentado">
+          <button className={soloMios ? 'on' : ''} onClick={() => setSoloMios(true)}>Autorizados para mí</button>
+          <button className={!soloMios ? 'on' : ''} onClick={() => setSoloMios(false)}>Todos</button>
+        </div>
       </div>
       <div className="m-mapa">
-        <MapaCampus alto={290} categoria={soloMios ? u.categoria : null} seleccionado={sel} onSelect={(id) => { setSel(id); abrir(id); }} />
-        <div className="leyenda">
-          {(['libre', 'medio', 'lleno', 'cerrado'] as const).map((n) => <span key={n}><i style={{ background: COLOR_NIVEL[n] }} />{TEXTO_NIVEL[n]}</span>)}
-        </div>
+        <MapaCampus alto={300} categoria={soloMios ? u.categoria : null} seleccionado={sel} onSelect={(id) => { setSel(id); abrir(id); }} />
+      </div>
+      <div className="leyenda pad">
+        {(['libre', 'medio', 'lleno', 'cerrado'] as const).map((n) => <span key={n}><i style={{ background: COLOR_NIVEL[n] }} />{TEXTO_NIVEL[n]}</span>)}
       </div>
       {u.plan === 'gratis' && <div className="pad"><CarruselAnuncios /></div>}
-      <div className="lista pad">
-        {lista.map((p) => {
-          const l = lotes[p.id];
-          const n = nivel(p, l);
-          const lleno = seLlenaEn(p, l);
-          const permitido = p.categorias.includes(u.categoria);
-          return (
-            <button key={p.id} className="lote-card" onClick={() => abrir(p.id)} style={{ opacity: permitido ? 1 : 0.6 }}>
-              <div className="lote-num" style={{ color: COLOR_NIVEL[n] }}>{l.cerrado ? '—' : libres(p, l)}<small>libres</small></div>
-              <div className="lote-info">
-                <b>{p.nombre}</b>
-                <div className="barra"><i style={{ width: `${pct(p, l)}%`, background: COLOR_NIVEL[n] }} /></div>
-                <small style={{ color: COLOR_NIVEL[n] }}>
-                  {l.cerrado ? `Cerrado · ${l.cerrado}` : `${TEXTO_NIVEL[n]} · ${pct(p, l)}% ocupado`}
-                  {lleno && lleno < 30 ? ` · se llena en ~${lleno} min` : ''}
-                </small>
-                {!permitido && <small className="muted"> · No autorizado para tu perfil</small>}
-              </div>
-            </button>
-          );
-        })}
+      <div className="pad">
+        <div className="seccion-t"><h2>Parqueaderos</h2><span>{lista.length} en el campus</span></div>
+        <div className="grupo">
+          {lista.map((p) => {
+            const l = lotes[p.id];
+            const n = nivel(p, l);
+            const lleno = seLlenaEn(p, l);
+            const permitido = p.categorias.includes(u.categoria);
+            return (
+              <button key={p.id} className={`fila-lote${permitido ? '' : ' atenuado'}`} onClick={() => abrir(p.id)}>
+                <div className="anillo" style={{ ['--p' as string]: `${pct(p, l)}%`, ['--c' as string]: COLOR_NIVEL[n] }}>
+                  <b>{l.cerrado ? '—' : libres(p, l)}</b>
+                </div>
+                <div className="fila-cuerpo">
+                  <b>{p.nombre.replace(/^Parqueadero |^Parqueo /, '')}</b>
+                  <small>
+                    <span style={{ color: COLOR_NIVEL[n] }}>{l.cerrado ? 'Cerrado' : TEXTO_NIVEL[n]}</span>
+                    {' · '}{l.cerrado ? l.cerrado : `${libres(p, l)} libres de ${p.capacidad}`}
+                  </small>
+                  {lleno && lleno < 30 && <small className="alerta-txt">Se llena en ~{lleno} min</small>}
+                  {!permitido && <small>No autorizado para tu perfil</small>}
+                </div>
+                <ChevronRight size={18} className="chev" />
+              </button>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

@@ -53,6 +53,11 @@ Abrir **http://localhost:5173**. La portada deja elegir la app móvil o el panel
 3. Ingresar: elegir el perfil (estudiante, docente o administrativo). Los datos de demo
    ya vienen llenos; cualquier correo `@espol.edu.ec` sirve.
 
+### Entrar al panel
+
+`/admin` pide iniciar sesión (rol: Coordinador de espacios). Los datos del Ing. Carlos
+Hidalgo ya vienen llenos: solo pulsar **Ingresar al panel**.
+
 ### Ver las dos vistas conectadas
 
 Abrir `/app` y `/admin` en **pestañas del mismo navegador**. Comparten el estado, así que
@@ -89,7 +94,7 @@ Botón morado **Demo** (abajo a la derecha). **Shift + D** lo oculta, para graba
 | 5 | Navegación guiada al parqueadero | App → “Llévame ahí”: ruta por las vías internas del campus, tiempo y distancia, espacios en destino en vivo |
 | 6 | Filtro por tipo de usuario y espacio | App: “Autorizados para mí” / “Todos”; detalle con categorías autorizadas y plazas preferenciales |
 | 7 | Registro de usuarios | App: Ingresar / Crear cuenta con correo institucional y perfil |
-| 8 | Reporte de incidencias | App → Reportar: tipo, descripción y foto; calificación al llegar. Panel → Incidencias: asignar guardia y resolver |
+| 8 | Reporte de incidencias | App → Reportar: tipo, descripción y foto; calificación al llegar. Panel → Incidencias: se notifica al grupo de guardias, el más cercano confirma y luego reporta la resolución; el usuario recibe el aviso |
 | 9 | Carrusel de anuncios | App: carrusel discreto (rota cada 6 s, flechas, sin ventanas emergentes) en el plan Gratis. Panel → Gestión → Anuncios: activar, impresiones, clics y CTR |
 | 10 | Pasarela de pago | App → Planes → Pago: resumen con IVA, tarjeta de prueba, comprobante. Panel → Gestión → Planes e ingresos |
 | 11 | Planes y cuotas de consulta | App: contador de consultas (Gratis 10/día, Plus 40, Premium ilimitado); al agotarse lleva a Planes |
@@ -119,4 +124,6 @@ docs/           flujos de demo y requerimientos
   (© OpenStreetMap contributors); rutas calculadas con OSRM (`scripts/`).
 - **Supuestos para el prototipo:** capacidades, categorías, cámaras, histórico, usuarios,
   anuncios y pagos.
+- Logo: `public/logo-original.jpg` (versiones recortadas en `public/logo-*.png`).
+- Tipografía Montserrat (cuerpo 14 px, subtítulos 18 px, cabeceras 22 px).
 - Stack: React 19 + TypeScript + Vite, Leaflet, Recharts, Zustand, lucide-react.

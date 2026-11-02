@@ -13,6 +13,7 @@ import Planes from './movil/Planes';
 import Pago from './movil/Pago';
 import Perfil from './movil/Perfil';
 import AdminLayout from './admin/Layout';
+import AdminLogin from './admin/Login';
 import Dashboard from './admin/Dashboard';
 import Camaras from './admin/Camaras';
 import Analitica from './admin/Analitica';
@@ -22,7 +23,7 @@ import Gestion from './admin/Gestion';
 function Portada() {
   return (
     <div className="portada">
-      <Logo size={64} />
+      <Logo size={56} vertical />
       <p>Prototipo · Sistemas de Información (CCPG1054) · ESPOL</p>
       <div className="portada-opciones">
         <Link to="/app" className="portada-op"><MonitorSmartphone size={34} /><b>App móvil</b><span>Conductores: estudiantes, docentes y administrativos</span></Link>
@@ -49,6 +50,7 @@ export default function App() {
           <Route path="pago/:plan" element={<Pago />} />
           <Route path="perfil" element={<Perfil />} />
         </Route>
+        <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="camaras" element={<Camaras />} />

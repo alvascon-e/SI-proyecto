@@ -48,7 +48,7 @@ export default function Reportar() {
 
   return (
     <div>
-      <header className="m-header"><div><div className="muted">Reporte de incidencias</div><h1>¿Qué pasó?</h1></div></header>
+      <header className="m-header"><div><div className="eyebrow">Reporte de incidencias</div><h1>¿Qué pasó?</h1></div></header>
       <form className="form pad" onSubmit={(e) => { e.preventDefault(); reportar({ parqueaderoId: lote, tipo, descripcion: desc || TIPOS_INCIDENCIA[tipo], foto }); setEnviado(true); }}>
         <label>Parqueadero</label>
         <select value={lote} onChange={(e) => setLote(e.target.value)}>{PARQUEADEROS.map((p) => <option key={p.id} value={p.id}>{p.nombre}</option>)}</select>

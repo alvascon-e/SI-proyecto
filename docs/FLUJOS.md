@@ -62,7 +62,8 @@ Datos, plan y consultas del día, parqueadero favorito, pagos realizados y cerra
 ## Panel web — administración (Ing. Carlos Hidalgo, Planta Física)
 
 ### 9. Monitoreo en tiempo real [1][3]
-1. `/admin`: KPIs (ocupación del campus, espacios libres, flujo de autos/min,
+0. `/admin` → **Iniciar sesión** (datos ya llenos) → *Ingresar al panel*.
+1. Monitoreo: KPIs (ocupación del campus, espacios libres, flujo de autos/min,
    parqueaderos saturados, cámaras en línea e incidencias abiertas).
 2. Mapa del campus con el estado de cada parqueadero.
 3. **Actividad en vivo**: entradas y salidas detectadas por cámara, alertas, reportes y pagos.
@@ -81,10 +82,13 @@ Datos, plan y consultas del día, parqueadero favorito, pagos realizados y cerra
 4. Satisfacción de los usuarios por parqueadero.
 5. **Exportar reporte** descarga un CSV con el mapa de calor y la rotación.
 
-### 12. Atender incidencias [8]
+### 12. Atender incidencias con el equipo de seguridad [8]
 1. **Incidencias**: reportes de usuarios (con foto) y detecciones automáticas de la IA.
-2. Filtrar por estado → *Asignar guardia* → *Resolver*.
-3. Al resolver, el usuario que reportó recibe un aviso en la app.
+2. Abrir una incidencia → panel lateral con la descripción, la foto y el **canal del grupo de seguridad**.
+3. *Notificar al grupo de guardias*: el centro de control pide que el guardia más cercano se acerque.
+4. A los ~4 s un guardia confirma que va en camino; a los ~13 s reporta la resolución
+   y la incidencia pasa sola a **Resuelta**.
+5. Si el reporte vino de un usuario, le llega el aviso “Incidencia resuelta” en la app.
 
 ### 13. Gestión [6][9][10][11]
 - **Parqueaderos:** capacidad, preferenciales, categorías autorizadas, cámaras;
@@ -100,7 +104,7 @@ Datos, plan y consultas del día, parqueadero favorito, pagos realizados y cerra
 2. App: ingresar como estudiante → mapa en vivo → *Buscar* → FIEC → *Llévame ahí* → llegar y calificar.
 3. App: *Reportar* auto mal estacionado con foto.
 4. Panel: Monitoreo (el reporte aparece en la actividad) → Cámaras IA (Demo: *IA: auto mal estacionado*).
-5. Panel: Incidencias → *Resolver* → en la app llega el aviso.
+5. Panel: Incidencias → abrir el reporte → *Notificar al grupo de guardias* → el guardia confirma y lo resuelve → en la app llega el aviso.
 6. Demo: *Cerrar por evento* un parqueadero → aviso al usuario y la recomendación cambia.
 7. Panel: Analítica (mapa de calor, proyección, exportar).
 8. App: agotar consultas → Planes → pago Premium → comprobante; Panel: el ingreso aparece.

@@ -34,7 +34,7 @@ export default function Analitica() {
   return (
     <div>
       <div className="fila-sb">
-        <h1 className="a-titulo">Analítica y reportes</h1>
+        <div className="a-head"><h1 className="a-titulo">Analítica y reportes</h1><p className="muted">Histórico de ocupación del semestre en curso.</p></div>
         <div className="demo-row">
           <select value={lote} onChange={(e) => setLote(e.target.value)}>
             <option value="todos">Todo el campus</option>
@@ -72,7 +72,7 @@ export default function Analitica() {
               <YAxis type="category" dataKey="nombre" tick={{ fontSize: 11 }} width={120} />
               <Tooltip />
               <Legend />
-              <Bar dataKey="rotacion" name="Rotación (autos/plaza/día)" fill="#2d68d6" radius={[0, 4, 4, 0]} />
+              <Bar dataKey="rotacion" name="Rotación (autos/plaza/día)" fill="#0066dc" radius={[0, 4, 4, 0]} />
               <Bar dataKey="permanenciaH" name="Permanencia media (horas)" fill="#f59e0b" radius={[0, 4, 4, 0]} />
             </BarChart>
           </ResponsiveContainer>
@@ -86,10 +86,10 @@ export default function Analitica() {
               <YAxis domain={[60, 100]} unit="%" tick={{ fontSize: 11 }} />
               <Tooltip />
               <Legend />
-              <Area dataKey="max" name="Rango estimado" stroke="none" fill="#2d68d633" />
+              <Area dataKey="max" name="Rango estimado" stroke="none" fill="#0066dc33" />
               <Area dataKey="min" name=" " stroke="none" fill="#fff" legendType="none" />
-              <Line dataKey="real" name="Real" stroke="#14213d" strokeWidth={2.5} dot={{ r: 3 }} />
-              <Line dataKey="proyeccion" name="Proyección" stroke="#2d68d6" strokeWidth={2.5} strokeDasharray="6 4" dot={false} />
+              <Line dataKey="real" name="Real" stroke="#0f2340" strokeWidth={2.5} dot={{ r: 3 }} />
+              <Line dataKey="proyeccion" name="Proyección" stroke="#0066dc" strokeWidth={2.5} strokeDasharray="6 4" dot={false} />
             </ComposedChart>
           </ResponsiveContainer>
           <p className="muted">Se esperan picos en semanas de evaluaciones (S9 y S16–S17): conviene habilitar el Parqueadero Coliseo Nuevo como apoyo.</p>

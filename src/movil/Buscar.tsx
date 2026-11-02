@@ -19,7 +19,7 @@ export default function Buscar() {
 
   return (
     <div>
-      <header className="m-header"><div><div className="muted">Recomendación inteligente</div><h1>¿A dónde vas?</h1></div></header>
+      <header className="m-header"><div><div className="eyebrow">Recomendación inteligente</div><h1>¿A dónde vas?</h1></div></header>
       <div className="chips pad wrap">
         {DESTINOS.map((d) => (
           <button key={d.id} className={`chip${destinoId === d.id ? ' on' : ''}`} onClick={() => consultar(() => setDestinoId(d.id))}>

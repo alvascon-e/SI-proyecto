@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import { Camera, Car, ParkingSquare, Siren, TrendingUp } from 'lucide-react';
+import { ArrowDownLeft, ArrowUpRight, Ban, Camera, Car, CheckCircle2, CreditCard, ParkingSquare, Siren, Star, TrendingUp, TriangleAlert, type LucideIcon } from 'lucide-react';
 import MapaCampus from '../components/MapaCampus';
 import { PARQUEADEROS } from '../data/parqueaderos';
 import { fmtHora, useParki } from '../store';
 import { COLOR_NIVEL, TEXTO_NIVEL, hace, libres, nivel, pct, seLlenaEn } from '../util';
 import type { TipoEvento } from '../types';
 
-const ICONO_EVENTO: Record<TipoEvento, string> = { entrada: '🚗', salida: '↩️', incidencia: '⚠️', cierre: '⛔', apertura: '✅', camara: '📷', pago: '💳', alerta: '🔴', calificacion: '⭐' };
+const ICONO_EVENTO: Record<TipoEvento, LucideIcon> = { entrada: ArrowDownLeft, salida: ArrowUpRight, incidencia: TriangleAlert, cierre: Ban, apertura: CheckCircle2, camara: Camera, pago: CreditCard, alerta: Siren, calificacion: Star };
 
 export default function Dashboard() {
   const { lotes, eventos, incidencias, serie } = useParki();
@@ -23,13 +23,13 @@ export default function Dashboard() {
 
   return (
     <div>
-      <h1 className="a-titulo">Monitoreo en tiempo real</h1>
+      <div className="a-head"><h1 className="a-titulo">Monitoreo en tiempo real</h1><p className="muted">Ocupación detectada por las cámaras de cada parqueadero.</p></div>
       <div className="kpis">
         <div className="kpi"><ParkingSquare /><div><b>{Math.round((ocup / cap) * 100)}%</b><span>Ocupación del campus</span></div></div>
         <div className="kpi"><Car /><div><b>{libresTot}</b><span>Espacios libres de {cap}</span></div></div>
         <div className="kpi"><TrendingUp /><div><b>{flujo >= 0 ? '+' : ''}{flujo.toFixed(1)}</b><span>Autos/min (flujo neto)</span></div></div>
-        <div className={`kpi${saturados ? ' rojo' : ''}`}><Siren /><div><b>{saturados}</b><span>Parqueaderos saturados</span></div></div>
-        <div className={`kpi${camOn < camTot ? ' ambar' : ''}`}><Camera /><div><b>{camOn}/{camTot}</b><span>Cámaras IA en línea · {abiertas} incidencias abiertas</span></div></div>
+        <div className={`kpi${saturados ? ' rojo' : ''}`}><Siren /><div><b>{saturados}</b><span>Saturados · {abiertas} incidencias abiertas</span></div></div>
+        <div className={`kpi${camOn < camTot ? ' ambar' : ''}`}><Camera /><div><b>{camOn}/{camTot}</b><span>Cámaras IA en línea</span></div></div>
       </div>
 
       <div className="grid-2">
@@ -39,28 +39,29 @@ export default function Dashboard() {
         <div className="card">
           <div className="card-t">Actividad en vivo</div>
           <div className="feed">
-            {eventos.slice(0, 14).map((e) => (
-              <div key={e.id} className={`feed-item ev-${e.tipo}`}><span>{ICONO_EVENTO[e.tipo]}</span><div>{e.texto}<small>{hace(e.ts)}</small></div></div>
-            ))}
+            {eventos.slice(0, 14).map((e) => {
+              const I = ICONO_EVENTO[e.tipo];
+              return <div key={e.id} className={`feed-item ev-${e.tipo}`}><span className="feed-ic"><I size={15} /></span><div>{e.texto}<small>{hace(e.ts)}</small></div></div>;
+            })}
           </div>
         </div>
       </div>
 
-      <div className="grid-2b">
+      <div className="grid-2b grid-estado">
         <div className="card">
           <div className="card-t">Estado por parqueadero</div>
-          <table className="tabla">
+          <table className="tabla tabla-estado">
             <thead><tr><th>Parqueadero</th><th>Ocupación</th><th>Libres</th><th>Tendencia</th><th>Estado</th></tr></thead>
             <tbody>
               {[...PARQUEADEROS].sort((a, b) => pct(b, lotes[b.id]) - pct(a, lotes[a.id])).map((p) => {
                 const l = lotes[p.id]; const n = nivel(p, l); const ll = seLlenaEn(p, l);
                 return (
                   <tr key={p.id} className={sel === p.id ? 'sel' : ''} onClick={() => setSel(p.id)}>
-                    <td>{p.nombre}</td>
-                    <td><div className="barra mini"><i style={{ width: `${pct(p, l)}%`, background: COLOR_NIVEL[n] }} /></div> {pct(p, l)}%</td>
+                    <td className="t-nombre">{p.nombre.replace(/^Parqueadero |^Parqueo /, "")}</td>
+                    <td className="nowrap"><div className="barra mini"><i style={{ width: `${pct(p, l)}%`, background: COLOR_NIVEL[n] }} /></div>{pct(p, l)}%</td>
                     <td><b>{libres(p, l)}</b>/{p.capacidad}</td>
-                    <td>{l.tendencia > 0.3 ? `▲ ${l.tendencia.toFixed(1)}/min${ll && ll < 30 ? ` · lleno en ~${ll}m` : ''}` : l.tendencia < -0.3 ? `▼ ${Math.abs(l.tendencia).toFixed(1)}/min` : 'estable'}</td>
-                    <td><span className="estado" style={{ background: COLOR_NIVEL[n] }}>{TEXTO_NIVEL[n]}</span></td>
+                    <td className="nowrap">{l.tendencia > 0.3 ? `▲ ${l.tendencia.toFixed(1)}/min` : l.tendencia < -0.3 ? `▼ ${Math.abs(l.tendencia).toFixed(1)}/min` : 'Estable'}{ll && ll < 30 ? <small className="t-guardia" style={{ color: 'var(--ambar)' }}>Lleno en ~{ll} min</small> : null}</td>
+                    <td className="nowrap"><span className="estado" style={{ ['--c' as string]: COLOR_NIVEL[n] }}>{TEXTO_NIVEL[n]}</span></td>
                   </tr>
                 );
               })}
@@ -71,12 +72,12 @@ export default function Dashboard() {
           <div className="card-t">Ocupación del campus hoy</div>
           <ResponsiveContainer width="100%" height={300}>
             <AreaChart data={serie} margin={{ top: 8, right: 8, left: -18, bottom: 0 }}>
-              <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#2d68d6" stopOpacity={0.5} /><stop offset="1" stopColor="#2d68d6" stopOpacity={0.02} /></linearGradient></defs>
+              <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#0066dc" stopOpacity={0.5} /><stop offset="1" stopColor="#0066dc" stopOpacity={0.02} /></linearGradient></defs>
               <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
               <XAxis dataKey="hora" tickFormatter={fmtHora} tick={{ fontSize: 11 }} minTickGap={40} />
               <YAxis domain={[0, 100]} tick={{ fontSize: 11 }} unit="%" />
               <Tooltip labelFormatter={(v) => fmtHora(Number(v))} formatter={(v) => [`${v}%`, 'Ocupación']} />
-              <Area type="monotone" dataKey="ocupacion" stroke="#2d68d6" strokeWidth={2} fill="url(#g1)" isAnimationActive={false} />
+              <Area type="monotone" dataKey="ocupacion" stroke="#0066dc" strokeWidth={2} fill="url(#g1)" isAnimationActive={false} />
             </AreaChart>
           </ResponsiveContainer>
         </div>

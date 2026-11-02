@@ -7,12 +7,12 @@ import { useParki } from '../store';
 import { COLOR_NIVEL, libres, nivel } from '../util';
 import type { Categoria } from '../types';
 
-function etiqueta(n: number | string, color: string, destacado: boolean) {
+function etiqueta(n: number | string, color: string, destacado: boolean, atenuado: boolean) {
   return L.divIcon({
     className: '',
-    iconSize: [34, 24],
-    iconAnchor: [17, 12],
-    html: `<div class="pin-lote${destacado ? ' pin-destacado' : ''}" style="--c:${color}"><b>${n}</b></div>`,
+    iconSize: [40, 24],
+    iconAnchor: [20, 12],
+    html: `<div class="pin-lote${destacado ? ' pin-destacado' : ''}${atenuado ? ' pin-atenuado' : ''}" style="--c:${color}"><i></i><b>${n}</b></div>`,
   });
 }
 
@@ -46,7 +46,7 @@ export default function MapaCampus({ alto = 360, categoria, seleccionado, onSele
       <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='© OpenStreetMap contributors' maxZoom={19} />
       <Encuadre puntos={encuadre} zoom={zoom} />
-      {ruta && <Polyline positions={ruta} pathOptions={{ color: '#2d68d6', weight: 6, opacity: 0.9 }} />}
+      {ruta && <Polyline positions={ruta} pathOptions={{ color: '#0066dc', weight: 5, opacity: 0.95, lineCap: 'round' }} />}
       {PARQUEADEROS.map((p) => {
         const l = lotes[p.id];
         const permitido = !categoria || p.categorias.includes(categoria);
@@ -55,15 +55,15 @@ export default function MapaCampus({ alto = 360, categoria, seleccionado, onSele
         return (
           <div key={p.id}>
             <Polygon positions={p.poligono} eventHandlers={{ click: () => onSelect?.(p.id) }}
-              pathOptions={{ color: c, weight: sel ? 3.5 : 1.5, fillColor: c, fillOpacity: permitido ? (sel ? 0.55 : 0.35) : 0.12 }} />
-            <Marker position={p.centro} icon={etiqueta(l.cerrado ? '×' : libres(p, l), c, sel)} eventHandlers={{ click: () => onSelect?.(p.id) }} opacity={permitido ? 1 : 0.55}>
+              pathOptions={{ color: c, weight: sel ? 2.5 : 1, fillColor: c, fillOpacity: permitido ? (sel ? 0.45 : 0.22) : 0.08 }} />
+            <Marker position={p.centro} icon={etiqueta(l.cerrado ? '—' : libres(p, l), c, sel, !permitido)} eventHandlers={{ click: () => onSelect?.(p.id) }}>
               <Tooltip direction="top" offset={[0, -14]}>{p.nombre}</Tooltip>
             </Marker>
           </div>
         );
       })}
-      {destino && <CircleMarker center={destino} radius={9} pathOptions={{ color: '#fff', weight: 3, fillColor: '#14213d', fillOpacity: 1 }}><Tooltip permanent direction="right" offset={[10, 0]}>Destino</Tooltip></CircleMarker>}
-      {yo && <CircleMarker center={yo} radius={8} pathOptions={{ color: '#fff', weight: 3, fillColor: '#2d68d6', fillOpacity: 1 }} />}
+      {destino && <CircleMarker center={destino} radius={9} pathOptions={{ color: '#fff', weight: 3, fillColor: '#0f2340', fillOpacity: 1 }}><Tooltip permanent direction="right" offset={[10, 0]} className="tip-destino">Destino</Tooltip></CircleMarker>}
+      {yo && <CircleMarker center={yo} radius={8} pathOptions={{ color: '#fff', weight: 3, fillColor: '#0066dc', fillOpacity: 1 }} />}
     </MapContainer>
   );
 }

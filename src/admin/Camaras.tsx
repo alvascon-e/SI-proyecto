@@ -12,7 +12,7 @@ export default function Camaras() {
   return (
     <div>
       <div className="fila-sb">
-        <h1 className="a-titulo">Cámaras con visión por computadora</h1>
+        <div className="a-head"><h1 className="a-titulo">Cámaras con visión por computadora</h1></div>
         <select value={lote} onChange={(e) => setLote(e.target.value)}>
           <option value="todos">Todos los parqueaderos (cámara principal)</option>
           {PARQUEADEROS.map((p) => <option key={p.id} value={p.id}>{p.nombre} · {p.camaras} cámaras</option>)}

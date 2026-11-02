@@ -40,6 +40,22 @@ export interface Incidencia {
   foto?: string;
   estado: EstadoIncidencia;
   creada: number;
+  /** canal con el grupo de guardias de seguridad */
+  mensajes?: MensajeGuardia[];
+  guardia?: string;
+}
+
+export interface MensajeGuardia {
+  id: string;
+  ts: number;
+  de: 'control' | 'guardia';
+  autor: string;
+  texto: string;
+}
+
+export interface Admin {
+  nombre: string;
+  correo: string;
 }
 
 export type TipoEvento = 'entrada' | 'salida' | 'incidencia' | 'cierre' | 'apertura' | 'camara' | 'pago' | 'alerta' | 'calificacion';

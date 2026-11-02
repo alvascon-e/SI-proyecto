@@ -31,7 +31,7 @@ export default function Detalle() {
         <button className={`icon-btn${fav ? ' fav' : ''}`} onClick={() => setFavorito(fav ? null : id)} title="Favorito"><Heart size={20} fill={fav ? 'currentColor' : 'none'} /></button>
       </header>
       <div className="pad">
-        <div className="gran-cifra" style={{ borderColor: COLOR_NIVEL[n] }}>
+        <div className="gran-cifra" style={{ color: COLOR_NIVEL[n] }}>
           <div className="cifra" style={{ color: COLOR_NIVEL[n] }}>{l.cerrado ? '—' : lib}</div>
           <div>
             <b>{l.cerrado ? `Cerrado · ${l.cerrado}` : 'espacios libres'}</b>
@@ -58,7 +58,7 @@ export default function Detalle() {
               <XAxis dataKey="hora" tick={{ fontSize: 10 }} interval={1} axisLine={false} tickLine={false} />
               <Tooltip formatter={(v) => [`${v}%`, 'Prob. lleno']} />
               <Bar dataKey="prob" radius={[4, 4, 0, 0]}>
-                {prob.map((d) => <Cell key={d.hora} fill={d.hora === hActual ? '#2d68d6' : d.prob > 70 ? '#fca5a5' : '#cbd5e1'} />)}
+                {prob.map((d) => <Cell key={d.hora} fill={d.hora === hActual ? '#0066dc' : d.prob > 70 ? '#fca5a5' : '#cbd5e1'} />)}
               </Bar>
             </BarChart>
           </ResponsiveContainer>

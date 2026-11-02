@@ -12,6 +12,7 @@ export default function MovilLayout() {
       <div className="movil">
         <Avisos />
         <main className="movil-contenido"><Outlet /></main>
+        <div className="tabbar-velo" aria-hidden="true" />
         <nav className="tabbar">
           <NavLink to="/app" end><Map size={22} strokeWidth={2.4} /><span>Mapa</span></NavLink>
           <NavLink to="/app/buscar"><Navigation size={22} strokeWidth={2.4} /><span>Buscar</span></NavLink>

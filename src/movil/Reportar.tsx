@@ -7,7 +7,7 @@ import { useParki } from '../store';
 import type { TipoIncidencia } from '../types';
 
 // Foto de ejemplo para la demo (ilustración de un auto ocupando dos plazas).
-const FOTO_EJEMPLO = 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260"><rect width="400" height="260" fill="#4b5563"/><g stroke="#f8fafc" stroke-width="5"><line x1="60" y1="20" x2="60" y2="240"/><line x1="200" y1="20" x2="200" y2="240"/><line x1="340" y1="20" x2="340" y2="240"/></g><g transform="rotate(-14 200 130)"><rect x="110" y="70" width="190" height="120" rx="26" fill="#dc2626"/><rect x="140" y="88" width="130" height="38" rx="8" fill="#1f2937" opacity=".8"/><rect x="140" y="140" width="130" height="34" rx="8" fill="#1f2937" opacity=".6"/></g><text x="200" y="250" font-family="sans-serif" font-size="14" fill="#fde68a" text-anchor="middle">Foto adjunta · ocupa dos plazas</text></svg>`);
+const FOTO_EJEMPLO = 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260"><defs><linearGradient id="a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5b6472"/><stop offset="1" stop-color="#454c57"/></linearGradient></defs><rect width="400" height="260" fill="url(#a)"/><g stroke="#f4f4f0" stroke-width="5" stroke-linecap="round"><line x1="60" y1="18" x2="60" y2="242"/><line x1="200" y1="18" x2="200" y2="242"/><line x1="340" y1="18" x2="340" y2="242"/></g><text x="130" y="40" font-family="sans-serif" font-size="18" font-weight="700" fill="#cfd3da">B3</text><text x="270" y="40" font-family="sans-serif" font-size="18" font-weight="700" fill="#cfd3da">B4</text><g transform="translate(200 138) rotate(-72)"><ellipse cx="0" cy="6" rx="62" ry="104" fill="#000" opacity=".22"/><rect x="-14" y="-104" width="10" height="16" rx="3" fill="#1f2937"/><rect x="-58" y="-96" width="116" height="192" rx="34" fill="#c81e1e"/><rect x="-58" y="-96" width="116" height="192" rx="34" fill="none" stroke="#8f1414" stroke-width="3"/><rect x="-46" y="-62" width="92" height="40" rx="12" fill="#1f2937" opacity=".85"/><rect x="-42" y="44" width="84" height="28" rx="10" fill="#1f2937" opacity=".75"/><rect x="-40" y="-18" width="80" height="58" rx="12" fill="#e23b3b"/><rect x="-66" y="-52" width="12" height="18" rx="4" fill="#c81e1e"/><rect x="54" y="-52" width="12" height="18" rx="4" fill="#c81e1e"/><rect x="-48" y="-94" width="22" height="10" rx="4" fill="#fde68a"/><rect x="26" y="-94" width="22" height="10" rx="4" fill="#fde68a"/><rect x="-48" y="86" width="22" height="8" rx="3" fill="#7f1d1d"/><rect x="26" y="86" width="22" height="8" rx="3" fill="#7f1d1d"/></g></svg>`);
 
 export default function Reportar() {
   const [sp] = useSearchParams();
@@ -57,7 +57,7 @@ export default function Reportar() {
           {(Object.keys(TIPOS_INCIDENCIA) as TipoIncidencia[]).map((t) => <button type="button" key={t} className={`chip${tipo === t ? ' on' : ''}`} onClick={() => setTipo(t)}>{TIPOS_INCIDENCIA[t]}</button>)}
         </div>
         <label>Descripción</label>
-        <textarea rows={3} value={desc} onChange={(e) => setDesc(e.target.value)} placeholder="Ej.: Auto blanco ocupando dos plazas en la fila B" />
+        <textarea rows={3} value={desc} onChange={(e) => setDesc(e.target.value)} placeholder="Ej.: Auto rojo ocupando dos plazas en la fila B" />
         <label>Foto</label>
         {foto ? (
           <div className="foto-prev"><img src={foto} alt="Foto del reporte" /><button type="button" className="btn" onClick={() => setFoto(undefined)}>Quitar</button></div>
